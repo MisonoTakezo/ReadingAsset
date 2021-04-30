@@ -62,7 +62,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'slim-rails'
-#　railsでslimを利用するためのgem
-
 gem 'html2slim'
-#　html.erbをhtmle.slimに変換するためのgem
+
+gem 'bootstrap'
+
+gem 'bcrypt', '~> 3.1.7'
