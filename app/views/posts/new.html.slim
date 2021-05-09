@@ -1,0 +1,12 @@
+h1.mt-2 感想を投稿する
+
+= form_with model: @post, local: true, class: "form-horizontal" do |f|
+  .form-group
+    = f.hidden_field :user_id, value: @current_user.id
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+  .form-group 
+    = f.label :impression
+    = f.text_field :impression, class: "form-control"
+  = f.submit "投稿する", class: "btn btn-primary"

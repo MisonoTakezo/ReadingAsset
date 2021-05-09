@@ -3,20 +3,15 @@ h1 アカウント詳細
 table.table.table-hover 
   tbody 
     tr 
-      th= User.human_attribute_name(:id)
-      td= @user.id
-    tr 
       th= User.human_attribute_name(:name)
       td = @user.name
     tr 
       th= User.human_attribute_name(:email)
       td = @user.email
-    tr
-      th= User.human_attribute_name(:created_at)
-      td= @user.created_at
-    tr 
-      th= User.human_attribute_name(:updated_at)
-      td= @user.updated_at
 
 = link_to '編集', edit_user_path(@user), class: 'btn btn-primary mr-3'
 = link_to '削除', @user, method: :delete, data: { confirm: "アカウントを削除します。よろしいですか？"}, class: 'btn btn-danger'
+
+ul.navbar-nav.ml-auto
+  li.nav-item 
+    = link_to "投稿する", new_post_path, class: "nav-link"

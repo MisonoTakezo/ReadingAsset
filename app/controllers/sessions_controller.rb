@@ -1,21 +1,25 @@
 class SessionsController < ApplicationController
+  layout "session"
+
   def new
   end
 
   def create
     user = User.find_by(email: session_params[:email])
-    puts user.authenticate(session_params[:password])
     if user && user.authenticate(session_params[:password])
       session[:user_id] = user.id
-      redirect_to user_path(user), notice: 'ログインしました。'
+      flash[:success] = "ログインしました。"
+      redirect_to user_path(user)
     else
-      redirect_to login_path, notice: 'ログインできませんでした。'
+      flash[:error] = "ログインできませんでした。"
+      redirect_to login_path
     end
   end
 
   def destroy
     reset_session
-    redirect_to login_path, notice: 'ログアウトしました。'
+    flash[:success] = "ログアウトしました。"
+    redirect_to login_path
   end
 
   private

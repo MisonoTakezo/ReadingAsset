@@ -1,0 +1,9 @@
+h1.mt-3.mb-3= @post.title
+.card.mb-2
+  h5.card-header 感想
+  .card-body 
+    p.card-text= @post.impression
+- if @post.created_by?(@current_user)
+  ul.navbar-nav.ml-auto
+    li.nav-item 
+      = link_to "編集する", edit_post_path(@post), class: "nav-link"
