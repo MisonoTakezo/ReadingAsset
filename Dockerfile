@@ -1,7 +1,7 @@
 FROM ruby:2.5.1
 ENV LANG C.UTF-8
 
-ENV APP_ROOT /usr/src/reading_asset
+ENV APP_ROOT /usr/src/ra
 
 
 WORKDIR $APP_ROOT
