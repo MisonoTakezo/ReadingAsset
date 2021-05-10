@@ -7,21 +7,35 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
+log
+tmp
+/public/assets/*
+/public/uploads/*
 !/log/.keep
-!/tmp/.keep
+!/tmp/images/.keep
 
-# Ignore uploaded files in development
-/storage/*
-!/storage/.keep
 
-/node_modules
-/yarn-error.log
-
-/public/assets
+# Ignore Byebug command history file.
 .byebug_history
 
+docker_volumes/mysql/*
+docker_volumes/redis/*
+.DS_Store
+.env
+
+node_modules
+
+vendor/bundle
+apidocs
+coverage
+
+.idea/
+
+!.gitkeep
 # Ignore master key for decrypting credentials and more.
 /config/master.key
