@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :current_user
   before_action :set_post, only: %i[edit update destroy]
+  before_action :current_creator?, only: %i[edit update destroy]
 
   def new
     @post = Post.new
@@ -49,7 +50,7 @@ class PostsController < ApplicationController
     end
 
     def update_post_params
-      params.require(:post).permit(:impression)
+      params.require(:post).permit(:title, :impression)
     end
 
     def set_post
@@ -57,6 +58,13 @@ class PostsController < ApplicationController
       unless @post
         flash[:error] = "この投稿は存在しません"
         redirect_to user_path(@current_user) and return
+      end
+    end
+
+    def current_creator?
+      unless @current_user == @post.user
+        flash[:error] = "このページを表示できません"
+        redirect_to post_path(@post)
       end
     end
 end

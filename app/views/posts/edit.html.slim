@@ -1,0 +1,9 @@
+h1.mt-2 投稿内容の編集
+= form_with model: @post, class: "form-horizontal" do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+  .form-group 
+    = f.label :impression
+    = f.text_field :impression, class: "form-control"
+  = f.submit "更新する", class: "btn btn-primary"
