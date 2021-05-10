@@ -1,0 +1,59 @@
+  
+version: "3"
+services:
+  db:
+    image: mysql:5.7.22
+    container_name: ra_db
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker_volumes/mysql:/var/lib/mysql
+      - ./docker_configs/mysql/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
+    env_file:
+      - .env
+  redis:
+    image: redis:4.0
+    volumes:
+      - ./docker_volumes/redis:/data
+    command: redis-server
+  nginx:
+    build:
+      context: docker_configs/nginx
+      dockerfile: Dockerfile
+    container_name: ra_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./public:/usr/src/ra/public
+      - ./log:/usr/src/ra/log
+    links:
+      - app
+  app: &app_base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: readingAsset/app
+    container_name: ra_rails
+    ports:
+      - "3000:3000"
+    command: sh rails_boot.sh
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV:
+    stdin_open: true
+    volumes:
+      - .:/usr/src/readingAsset
+  # worker:
+  #   <<: *app_base
+  #   container_name: ra_worker
+  #   command: bundle exec sidekiq -C config/sidekiq.yml
+  #   ports:
+  #     - "8099:3000"
+  #   env_file:
+  #     - .env
+volumes:
+  db:
+    driver: "local"
+  bundle_install:
+    driver: local
