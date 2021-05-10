@@ -32,7 +32,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: readingAsset/app
+    image: reading_asset/app
     container_name: ra_rails
     ports:
       - "3000:3000"
@@ -43,7 +43,7 @@ services:
       RAILS_ENV:
     stdin_open: true
     volumes:
-      - .:/usr/src/readingAsset
+      - .:/usr/src/reading_asset
   # worker:
   #   <<: *app_base
   #   container_name: ra_worker
