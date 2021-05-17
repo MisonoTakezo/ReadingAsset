@@ -1,0 +1,37 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: docker_configs/nginx
+      dockerfile: Dockerfile.prd
+    image: ra/nginx
+    container_name: ra_nginx
+    ports:
+      - '80:80'
+    volumes:
+      - ./public:/usr/src/ra/public
+      - ./log:/usr/src/ra/log
+    links:
+      - app
+  app: &app_base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ra/rails
+    container_name: ra_rails
+    ports:
+      - '3000:3000'
+    command: sh rails_boot.sh
+    env_file:
+      - .env
+    environment:
+      TZ: Asia/Tokyo
+      RAILS_ENV:
+    stdin_open: true
+    volumes:
+      - .:/usr/src/ra
+volumes:
+  db:
+    driver: 'local'
+  bundle_install:
+    driver: local
