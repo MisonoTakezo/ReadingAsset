@@ -29,6 +29,6 @@ staging:
 production:
   <<: *default
   database: reading_asset
-  username: reading_asset
+  username: <%= ENV['MYSQL_ROOT_USER'] %>
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   host: <%= ENV['MYSQL_HOST'] || 'db' %>
