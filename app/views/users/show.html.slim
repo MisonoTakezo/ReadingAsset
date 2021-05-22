@@ -4,10 +4,10 @@ table.table.table-hover
   tbody 
     tr 
       th= User.human_attribute_name(:name)
-      td = @user.name
+      td= @user.name
     tr 
       th= User.human_attribute_name(:email)
-      td = @user.email
+      td= @user.email
 
 = link_to '編集', edit_user_path(@user), class: 'btn btn-primary mr-3'
 = link_to '削除', @user, method: :delete, data: { confirm: "アカウントを削除します。よろしいですか？"}, class: 'btn btn-danger'
@@ -15,3 +15,13 @@ table.table.table-hover
 ul.navbar-nav.ml-auto
   li.nav-item 
     = link_to "投稿する", new_post_path, class: "nav-link"
+- if @posts&.count > 0
+  - @posts.each do |p|
+    ul.navbar-nav.ml-auto
+      li.nav-item 
+        h5= p.title 
+      li.nav-ite 
+        h5= p.impression 
+- else
+  h1 NoContent
+
