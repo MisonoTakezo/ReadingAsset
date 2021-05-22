@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,22 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_509_035_503) do
-  create_table 'posts', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin', force: :cascade do |t|
-    t.bigint 'user_id'
-    t.string 'title'
-    t.string 'impression'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'status', default: 1, null: false, comment: '1: visible, 2: deleted'
+ActiveRecord::Schema.define(version: 2021_05_22_022214) do
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "status", limit: 1, default: 0, null: false, comment: "ステータス", unsigned: true
+    t.string "title", limit: 100, null: false, comment: "タイトル"
+    t.text "impression", comment: "感想"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin', force: :cascade do |t|
-    t.string 'name', null: false
-    t.string 'email', null: false
-    t.string 'password_digest', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['email'], name: 'index_users_on_email', unique: true
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "name", limit: 100, null: false, comment: "名前"
+    t.string "email", limit: 100, null: false, comment: "メールアドレス"
+    t.text "introduction", null: false, comment: "自己紹介"
+    t.string "password_digest", limit: 100, null: false, comment: "パスワードハッシュ値"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
 end

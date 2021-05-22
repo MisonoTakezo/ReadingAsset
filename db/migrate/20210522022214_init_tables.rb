@@ -9,7 +9,6 @@ class InitTables < ActiveRecord::Migration[5.2]
       t.string :password_digest, limit: 100, null: false, comment: 'パスワードハッシュ値'
 
       t.timestamps
-      t.index :email
     end
 
     create_table :posts do |t|

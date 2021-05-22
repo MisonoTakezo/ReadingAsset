@@ -45,6 +45,8 @@ gem "toastr-rails"
 
 gem "dotenv-rails"
 
+gem "annotate"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 
