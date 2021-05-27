@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :current_user
   def new
     @user = User.new
     render layout: "session"

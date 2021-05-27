@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_022214) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "name", limit: 100, null: false, comment: "名前"
     t.string "email", limit: 100, null: false, comment: "メールアドレス"
-    t.text "introduction", null: false, comment: "自己紹介"
+    t.text "introduction", comment: "自己紹介"
     t.string "password_digest", limit: 100, null: false, comment: "パスワードハッシュ値"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

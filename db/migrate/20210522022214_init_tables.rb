@@ -5,7 +5,7 @@ class InitTables < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :name, limit: 100, null: false, comment: '名前'
       t.string :email, limit: 100, null: false, unique: true, comment: 'メールアドレス'
-      t.text :introduction, null: false, comment: '自己紹介'
+      t.text :introduction, comment: '自己紹介'
       t.string :password_digest, limit: 100, null: false, comment: 'パスワードハッシュ値'
 
       t.timestamps

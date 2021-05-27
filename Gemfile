@@ -36,7 +36,6 @@ gem "jbuilder", "~> 2.5"
 gem "html2slim"
 gem "slim-rails"
 
-gem "bootstrap"
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
 
