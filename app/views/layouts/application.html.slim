@@ -8,15 +8,8 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .app-title.navbar.navbar-expand-md.navbar-light.bg-light 
-      .navbar-brand ReadingAsset 
-
-      ul.navbar-nav.ml-auto 
-        - if current_user 
-          li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
-        - else
-          li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
-    .container 
+    = render partial: 'partials/header'
+    .container
       - flash.each do |type, msg|
         javascript:
           toastr.options.positionClass = "toast-bottom-center";
