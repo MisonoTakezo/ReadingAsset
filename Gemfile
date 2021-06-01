@@ -35,6 +35,8 @@ gem "jbuilder", "~> 2.5"
 
 gem "html2slim"
 gem "slim-rails"
+gem 'rails-i18n'
+gem 'enum_help'
 
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
@@ -45,6 +47,9 @@ gem "toastr-rails"
 gem "dotenv-rails"
 
 gem "annotate"
+
+gem "carrierwave"
+gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
@@ -64,6 +69,7 @@ group :development do
   gem "rubocop-rails", require: false
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "letter_opener_web"
 end
 
 group :test do

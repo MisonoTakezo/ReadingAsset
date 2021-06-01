@@ -1,31 +1,29 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  layout "session"
-
+  before_action :logout_required, only: [:create]
   def new; end
 
   def create
-    user = User.find_by(email: session_params[:email])
-    if user&.authenticate(session_params[:password])
-      session[:user_id] = user.id
+    user = User.find_by(email: login_params[:email])
+    if user&.authenticate(login_params[:password])
+      login_and_remember(user)
       flash[:success] = "ログインしました。"
       redirect_to user_path(user)
     else
-      flash[:error] = "ログインできませんでした。"
+      flash[:error] = "メールアドレスかパスワードが間違っています。"
       redirect_to login_path
     end
   end
 
   def destroy
-    reset_session
+    logout
     flash[:success] = "ログアウトしました。"
     redirect_to login_path
   end
 
   private
-
-    def session_params
+    def login_params
       params.require(:session).permit(:email, :password)
     end
 end

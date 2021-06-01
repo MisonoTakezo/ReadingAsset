@@ -1,11 +1,11 @@
-module Authentication
+module Authenticate
   extend ActiveSupport::Concern
 
   def current_user
     if session[:user_id]
-      @current_user ||= User.find_by(id: session[:user_id], status: :activated)
+      @current_user ||= User.find_by(id: session[:user_id], status: :verified)
     elsif user_id = cookies.signed[:user_id]
-      user = User.find_by(id: user_id, status: :activated)
+      user = User.find_by(id: user_id, status: :verified)
       if user && user.remember_authenticated?(cookies[:remember_token])
         login(user)
         @current_user = user
@@ -25,12 +25,11 @@ module Authentication
   end
 
   def login_required
-    # TODO: ログイン画面に飛ばす
-    return redirect_to login_url unless current_user
+    return redirect_to login_path unless current_user
   end
 
   def logout_required
-    return redirect_to mypage_url if current_user
+    return redirect_to mypage_user_path(@current_user) if current_user
   end
 
   def login_and_remember(user)
@@ -39,8 +38,13 @@ module Authentication
   end
 
   def remember(user)
-    token = user.remembers.create.token
+    token = user.user_remembers.create.token
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = token
+  end
+
+  # ログイン中？
+  def logged_in?
+    !current_user.nil?
   end
 end
