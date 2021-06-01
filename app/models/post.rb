@@ -4,13 +4,13 @@
 #
 # Table name: posts
 #
-#  id                 :bigint           not null, primary key
-#  user_id            :bigint
-#  status(ステータス) :integer          default(NULL), unsigned, not null
-#  title(タイトル)    :string(100)      not null
-#  impression(感想)   :text(65535)
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                                                        :bigint           not null, primary key
+#  user_id                                                   :bigint
+#  status(ステータス 0: unverified, 1: verified, 2: deleted) :integer          default("invisible"), unsigned, not null
+#  title(タイトル)                                           :string(100)      not null
+#  impression(感想)                                          :text(65535)
+#  created_at                                                :datetime         not null
+#  updated_at                                                :datetime         not null
 #
 # Indexes
 #
@@ -22,7 +22,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  enum status: { visible: 1, deleted: 2 }
+  enum status: {invisible: 0, visible: 1, deleted: 2 }
 
   def created_by?(current_user)
     current_user && current_user == user
