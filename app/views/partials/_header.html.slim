@@ -7,7 +7,10 @@
           br
           | Asset
     .header-right
-      = link_to new_post_path, class: "post-link"
-        h5.header-post-link 投稿する
-      = link_to user_path(@current_user), class: "mypage-link"
-        img.person-icon src=image_url('common/person-icon.svg')
+      - if logged_in?
+        = link_to new_post_path, class: "post-link"
+          h5.header-post-link 投稿する
+        = link_to mypage_user_path(@current_user), class: "mypage-link"
+          img.person-icon src=image_url('common/person-icon.svg')
+      - else 
+        h5 NoContent
