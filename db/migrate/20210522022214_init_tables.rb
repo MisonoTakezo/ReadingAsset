@@ -3,7 +3,7 @@
 class InitTables < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-      t.integer :status, unsigned: true, limit: 1, null: false, default: 1, comment: "ステータス 0:invisible, 1: visible, 2:deleted"
+      t.integer :status, unsigned: true, limit: 1, null: false, default: 0, comment: "ステータス 0:invisible, 1: visible, 2:deleted"
       t.string :name, limit: 100, null: false, comment: '名前'
       t.string :email, limit: 100, null: false, unique: true, comment: 'メールアドレス'
       t.text :introduction, comment: '自己紹介'
@@ -26,7 +26,7 @@ class InitTables < ActiveRecord::Migration[5.2]
 
     create_table :posts do |t|
       t.references :user
-      t.integer :status, unsigned: true, limit: 1, null: false, default: 0, comment: "ステータス 0: unverified, 1: verified, 2: deleted"
+      t.integer :status, unsigned: true, limit: 1, null: false, default: 1, comment: "ステータス 0: unverified, 1: verified, 2: deleted"
       t.string :title, limit: 100, null: false, comment: 'タイトル'
       t.text :impression, comment: '感想'
 

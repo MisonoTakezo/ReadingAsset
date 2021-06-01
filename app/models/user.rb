@@ -33,10 +33,10 @@ class User < ApplicationRecord
   validates :email,
             presence: true,
             uniqueness: true,
-            format: { with: VALID_EMAIL_REGEX }
+            format: { with: VALID_EMAIL_REGEX }, on: :create
 
-  validates :password, length: { minimum: 8, maximum: 50 }
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :password, length: { minimum: 8, maximum: 50 }, on: :create
+  validates :name, presence: true, length: { maximum: 50 }, on: :create, on: :update
 
   enum status: { unverified: 0, verified: 1, deleted: 2 }, _prefix: true
 
@@ -53,9 +53,7 @@ class User < ApplicationRecord
   end
 
   def verify_by(params)
-    return false unless verification_token_valid?(params[:verification_token])
-
-    update(status: :verified)
+      update(status: :verified)
   end
 
   def remember_authenticated?(token)

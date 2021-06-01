@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def mypage
-    @user = User.find(id: params[:id], status: :verified)
+    @user = User.find_by(id: params[:id], status: :verified)
     unless @user == @current_user
       redirect_to user_path(@user) && return
     end
@@ -53,14 +53,21 @@ class UsersController < ApplicationController
   # GET /users/:id/verify
   def verify
     user = User.find(verify_params[:id])
-    unless user.verify_by(verify_params)
+    puts user.status
+    if user.verification_token == verify_params[:vt]
+      if user.update!(status: :verified)
+        flash[:success] = "更新しました。"
+        login_and_remember(user)
+        flash[:success] = "メールアドレスの確認が完了しました。プロフィールを編集してください！"
+        redirect_to root_path
+      else
+        flash[:error] = "更新に失敗しました。"
+        redirect_to root_path
+      end
+    else
       flash[:error] = "このアカウントの認証に失敗しました。再度確認メールに送られたURLを表示ください。"
       redirect_to("/") && (return)
     end
-
-    login_and_remember(@user)
-    flash[:success] = "メールアドレスの確認が完了しました。プロフィールを編集してください！"
-    redirect_to user_path(@user)
   end
 
   private

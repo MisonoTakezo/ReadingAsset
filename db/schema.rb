@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_022214) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "status", limit: 1, default: 0, null: false, comment: "ステータス 0: unverified, 1: verified, 2: deleted", unsigned: true
+    t.integer "status", limit: 1, default: 1, null: false, comment: "ステータス 0: unverified, 1: verified, 2: deleted", unsigned: true
     t.string "title", limit: 100, null: false, comment: "タイトル"
     t.text "impression", comment: "感想"
     t.datetime "created_at", null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_022214) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.integer "status", limit: 1, default: 1, null: false, comment: "ステータス 0:invisible, 1: visible, 2:deleted", unsigned: true
+    t.integer "status", limit: 1, default: 0, null: false, comment: "ステータス 0:invisible, 1: visible, 2:deleted", unsigned: true
     t.string "name", limit: 100, null: false, comment: "名前"
     t.string "email", limit: 100, null: false, comment: "メールアドレス"
     t.text "introduction", comment: "自己紹介"

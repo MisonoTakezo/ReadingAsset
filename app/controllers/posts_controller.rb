@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :current_user
-  before_action :set_post, only: %i[edit update destroy]
-  before_action :current_creator?, only: %i[edit update destroy]
+  before_action :login_required, only: [:new, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :current_user, only: [:index, :show]
+  before_action :must_be_post_owner, only: [:edit, :update, :destroy]
+
+  def index; end;
 
   def new
     @post = Post.new
@@ -21,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id], status: visible)
   end
 
   def edit; end
@@ -59,11 +62,11 @@ class PostsController < ApplicationController
       @post = Post.find_by(id: params[:id], status: :visible)
       unless @post
         flash[:error] = "この投稿は存在しません"
-        redirect_to user_path(@current_user) and return
+        redirect_to root_path and return
       end
     end
 
-    def current_creator?
+    def must_be_post_owner
       unless @current_user == @post.user
         flash[:error] = "このページを表示できません"
         redirect_to post_path(@post)
