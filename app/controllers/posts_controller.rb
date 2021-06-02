@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id: params[:id], status: visible)
+    @post = Post.find_by(id: params[:id], status: :visible)
   end
 
   def edit; end
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   def destroy
     if @post.update!(status: :deleted)
       flash[:success] = "投稿を削除しました。"
-      redirect_to user_path(@current_user)
+      redirect_to mypage_user_path(@current_user)
     else
       flash[:error] = "投稿の削除に失敗しました。"
     end

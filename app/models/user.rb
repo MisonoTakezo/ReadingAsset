@@ -47,13 +47,11 @@ class User < ApplicationRecord
   after_create do
     VerifyUserMailer.verify(self).deliver
   end
-  
-  def verification_token_valid?(token)
-    self.verification_token == token
-  end
 
-  def verify_by(params)
+  def verify_by(token)
+    if token == self.verification_token
       update(status: :verified)
+    end
   end
 
   def remember_authenticated?(token)
