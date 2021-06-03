@@ -1,7 +1,18 @@
+body {
+  background-color: #dcdcdc;
+}
 .container {
   max-width: 832px;
   margin: 80px auto 60px;
   @include media-breakpoint-up(md) {
     margin-top: 100px;
+  }
+}
+
+.base-button {
+
+  &:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
   }
 }

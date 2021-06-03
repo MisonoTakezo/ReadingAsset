@@ -8,7 +8,7 @@
         = f.text_field :email, placeholder: "メールアドレス", class: 'login-field'
         = f.password_field :password, placeholder: "パスワード(8文字以上)", class: 'login-field'
         = f.password_field :password_confirmation, placeholder: "パスワード(確認用)", class: 'login-field'
-        = f.submit '登録する', class: 'login-button', data: { disable_with: "登録しています..." }
+        = f.submit '登録する', class: 'base-button login-button', data: { disable_with: "登録しています..." }
 
         - if @user.errors.any?
           .login-errors

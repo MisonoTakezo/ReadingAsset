@@ -2,26 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .session-container {
-
   .session-card {
-    border: solid;
+    background-color: white;
+    border: none;
     border-color: #a9a9a9;
     border-radius: 20px;
     margin: 46px auto;
     padding: 35px 22px;
 
     @include media-breakpoint-up(md) {
-      max-width: 560px;
-      margin: 46px auto;
+      max-width: 500px;
+      margin: 150px auto 0;
+      padding: 35px 22px;
     }
   }
   .session-user-icon {
     display: block;
-    margin: 0 auto 20px;
+    margin: 0 auto 5px;
   }
 
   .session-title {
-    margin-top: 10px;
+    margin: 15px auto 10px;
     text-align: center;
     font-size: 1.8rem;
     line-height: 1.8rem;
@@ -30,7 +31,7 @@
   }
 
   .login-form {
-    margin-top: 30px;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
 
@@ -41,7 +42,7 @@
       border: solid;
       border-radius: 8px;
       border-color: #dcdcdc;
-      margin-top: 24px;
+      margin-top: 10px;
       font-size: 1.2rem;
     }
 
@@ -53,7 +54,7 @@
       height: 44px;
       line-height: 44px;
       text-align: center;
-      margin-top: 54px;
+      margin-top: 20px;
       border: none;
       font-size: 1.4rem;
       font-weight: 500;
@@ -63,7 +64,7 @@
     }
 
     .signup-text-link {
-      margin-top: 22px;
+      margin-top: 15px;
       text-align: center;
       line-height: 1.2rem;
       font-size: 1.2rem;
@@ -75,14 +76,14 @@
     .login-errors {
       width: 100%;
       text-align: center;
-      margin-top: 22px;
+      margin-top: 10px;
       padding: 5px 0;
       
       border: 1px solid $error-color;
       border-radius: 8px;
       
       .login-error-text {
-        margin: 12px 0 0 0;
+        margin: 10px 0 0 0;
         line-height: 1.0rem;
         font-size: 1.0rem;
         font-weight: 500;

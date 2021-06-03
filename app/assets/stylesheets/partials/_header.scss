@@ -66,7 +66,7 @@
 
       .header-post-link {
         margin: 0 0 0 0;
-        padding: 5px;
+        padding: 5px 10px;
         border: 1px solid #8888ff;
         border-radius: 5px;
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.12);
@@ -89,6 +89,16 @@
         &:hover {
           text-decoration: none;
         }
+      }
+
+      .header-login-link {
+        margin: 0 0 0 0;
+        padding: 5px 10px;
+        background-color: $login-button-blue;
+        border: 1px solid $login-button-blue;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.12);
+        color: #ffffff;
       }
     }
   }
