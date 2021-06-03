@@ -1,16 +1,18 @@
-h1 アカウント登録
+.session-container 
+    .session-card
+      img.session-user-icon src="#{image_url('common/session-user-icon.svg')}"
+      h1.session-title 新規登録
 
-= form_with model: @user , local: true do |f|
-  .form-group
-    = f.label :name, '名前'
-    = f.text_field :name, class: 'form-control'
-  .form-group
-    = f.label :email, 'メールアドレス'
-    = f.text_field :email, class: 'form-control'
-  .form-group 
-    = f.label :password, 'パスワード'
-    = f.password_field :password, class: 'form-control'
-  .form-group 
-    = f.label :password_confirmation, 'パスワード（確認）'
-    = f.password_field :password_confirmation, class: 'form-control'
-  = f.submit '登録する', class: 'btn btn-primary'
+      = form_with model: @user , local: true , class: "login-form" do |f|
+        = f.text_field :name, placeholder: "名前", class: 'login-field'
+        = f.text_field :email, placeholder: "メールアドレス", class: 'login-field'
+        = f.password_field :password, placeholder: "パスワード(8文字以上)", class: 'login-field'
+        = f.password_field :password_confirmation, placeholder: "パスワード(確認用)", class: 'login-field'
+        = f.submit '登録する', class: 'login-button', data: { disable_with: "登録しています..." }
+
+        - if @user.errors.any?
+          .login-errors
+            - @user.errors.full_messages.each do |message|
+              p.login-error-text = message
+
+        = link_to "アカウントをすでにお持ちの方", login_path, class: "signup-text-link"
