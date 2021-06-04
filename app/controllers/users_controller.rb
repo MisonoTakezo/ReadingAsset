@@ -24,16 +24,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id], status: :verified)
-    if @user == @current_user
-      redirect_to mypage_user_path(@user) && (return)
+    if @current_user && @current_user == @user
+      redirect_to mypage_user_path(@user) and return
     end
     @posts = @user.posts.order(updated_at: :desc)
   end
 
   def mypage
     @user = User.find_by(id: params[:id], status: :verified)
-    unless @user == @current_user
-      redirect_to user_path(@user) && (return)
+    unless  @current_user && @current_user == @user
+      redirect_to user_path(@user) and return
     end
     @posts = @current_user.posts.order(updated_at: :desc)
   end

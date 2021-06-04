@@ -11,7 +11,10 @@
         = link_to new_post_path, class: "base-button post-link"
           h5.header-post-link 投稿する
         = link_to mypage_user_path(@current_user), class: "mypage-link"
-          img.person-icon src=image_url('common/person-icon.svg')
+          - if @current_user.profile_image
+            img.person-icon src= @current_user.profile_image.url
+          - else
+            img.person-icon src=image_url('common/person-icon.svg')
       - else 
         = link_to login_path, class: "base-button login-link"
           h5.header-login-link ログイン
