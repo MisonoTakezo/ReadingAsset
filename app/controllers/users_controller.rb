@@ -45,11 +45,11 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(update_user_params)
-      flash[:success] = "アカウント情報を更新しました。"
-      redirect_to edit_user_path(@user)
+      flash[:success] = "プロフィールを更新しました。"
+      redirect_to mypage_user_path(@user)
     else
       render :edit
-      flash[:error] = "アカウント情報の更新に失敗しました。"
+      flash[:error] = "プロフィールの更新に失敗しました。"
     end
   end
 

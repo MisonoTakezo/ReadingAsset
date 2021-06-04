@@ -16,6 +16,85 @@
       padding: 35px 22px;
     }
   }
+
+  .user-info-wrapper {
+    max-width: calc(100% - 50px);
+    width: 100%;
+    margin: 30px auto 20px;
+  
+    .add-profile-image-button {
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: none;
+      margin: 0 auto;
+      @include media-breakpoint-up(md) {
+        width: 200px;
+        height: 200px;
+      }
+  
+      .profile-image-preview {
+        align-items: center;
+        display: none;
+        width: 100px;
+        height: 100px;
+        pointer-events: none;
+        object-fit: cover;
+        border-radius: 50%;
+        transform:translate(-5px, 0px);
+  
+        @include media-breakpoint-up(md) {
+          width: 200px;
+          height: 200px;
+        }
+  
+        &.active {
+          display: block;
+        }
+  
+        &.margin {
+          margin: 108px auto 0;
+        }
+      }
+    }
+  
+    .profile-image {
+      display: block;
+      width: 102px;
+      height: 102px;
+      box-shadow: 2px 8px 24px;
+      pointer-events: none;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0;
+  
+      @include media-breakpoint-up(md) {
+        margin: 0;
+        width: 238px;
+        height: 238px;
+      }
+  
+      &--default {
+        width: 102px;
+        height: 102px;
+        border-radius: 50%;
+        box-shadow: 2px 8px 24px;
+        background-image: image-url("icon/profile");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 32%;
+        margin: 43px 15px 43px 0;
+  
+        @include media-breakpoint-up(md) {
+          margin: 0;
+          width: 238px;
+          height: 238px;
+        }
+      }
+    }
+  }
+  
   .session-user-icon {
     display: block;
     margin: 0 auto 5px;
@@ -44,6 +123,14 @@
       border-color: #dcdcdc;
       margin-top: 10px;
       font-size: 1.2rem;
+    }
+
+    textarea.login-field {
+      height: 94px;
+    }
+
+    .file-field {
+      display: none;
     }
 
     .login-button {
