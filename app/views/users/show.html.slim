@@ -1,26 +1,4 @@
-h1 アカウント情報
-
-table.table.table-hover 
-  tbody 
-    tr 
-      th= User.human_attribute_name(:name)
-      td= @user.name
-    tr 
-      th= User.human_attribute_name(:email)
-      td= @user.email
-
-= link_to '編集', edit_user_path(@user), class: 'btn btn-primary mr-3'
-
-ul.navbar-nav.ml-auto
-  li.nav-item 
-    = link_to "投稿する", new_post_path, class: "nav-link"
-- if @posts && @posts.count > 0
-  - @posts.each do |p|
-    ul.navbar-nav.ml-auto
-      li.nav-item 
-        h5= p.title 
-      li.nav-ite 
-        h5= p.impression 
-- else
-  h1 NoContent
-
+.session-container 
+    .session-card
+      = render partial: 'partials/user_profile', locals: { user: @user}
+      .transition-wrapper
