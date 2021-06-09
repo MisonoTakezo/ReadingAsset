@@ -49,6 +49,10 @@ gem "annotate"
 
 gem "carrierwave"
 gem 'mini_magick'
+gem "smart_init"
+gem 'addressable'
+gem "virtus"
+gem "virtus-multiparams"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
