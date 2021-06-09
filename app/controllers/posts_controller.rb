@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   before_action :must_be_post_owner, only: [:edit, :update, :destroy]
 
   def index
-    @name = "rails"
     @books = Fetcher::GoogleBook::BookIndex.call(keyword: "rails")
   end;
 
