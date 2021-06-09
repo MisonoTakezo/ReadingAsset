@@ -6,7 +6,10 @@ class PostsController < ApplicationController
   before_action :current_user, only: [:index, :show]
   before_action :must_be_post_owner, only: [:edit, :update, :destroy]
 
-  def index; end;
+  def index
+    @name = "rails"
+    @books = Fetcher::GoogleBook::BookIndex.call(keyword: "rails")
+  end;
 
   def new
     @post = Post.new
