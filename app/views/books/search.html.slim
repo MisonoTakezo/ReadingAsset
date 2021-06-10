@@ -1,0 +1,10 @@
+h1 hello
+= form_tag('/books/search', method: :get, class: "search-form")
+      .search-bar
+        = text_field_tag :keyword, @keyword, class: "search-text-field", placeholder: "本をを検索"
+      = submit_tag "検索", name: nil, class: "search-button"
+- @books.each do |book|
+            ul 
+              li = book.title 
+              = image_tag image_url(book.image)
+              = link_to "感想を書く", new_post_path(api_id: book.api_id)

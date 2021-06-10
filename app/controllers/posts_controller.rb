@@ -7,10 +7,11 @@ class PostsController < ApplicationController
   before_action :must_be_post_owner, only: [:edit, :update, :destroy]
 
   def index
-    @books = Fetcher::GoogleBook::BookIndex.call(keyword: "rails")
-  end;
+    @books = Fetcher::GoogleBook::BookSearch.call(keyword: "rails")
+  end
 
   def new
+    @book = Fetcher::GoogleBook::BookIdentify.call(api_id: new_post_params[:api_id])
     @post = Post.new
   end
 
@@ -58,6 +59,10 @@ class PostsController < ApplicationController
 
     def update_post_params
       params.require(:post).permit(:title, :impression)
+    end
+
+    def new_post_params
+      params.permit(:api_id)
     end
 
     def set_post

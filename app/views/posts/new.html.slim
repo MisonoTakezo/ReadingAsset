@@ -1,12 +1,19 @@
-h1.mt-2 感想を投稿する
-
-= form_with model: @post, local: true, class: "form-horizontal" do |f|
-  .form-group
-    = f.hidden_field :user_id, value: @current_user.id
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: "form-control"
-  .form-group 
-    = f.label :impression
-    = f.text_field :impression, class: "form-control"
-  = f.submit "投稿する", class: "btn btn-primary"
+- if @book.present?
+  h1.mt-2 感想を投稿する
+  h1 = @book.title 
+  = image_tag image_url(@book.image)
+  - @book.authors.each do |author|
+    p = author
+  p = @book.description.html_safe
+  = form_with model: @post, local: true, class: "form-horizontal" do |f|
+    .form-group
+      = f.hidden_field :user_id, value: @current_user.id
+    .form-group
+      = f.hidden_field :title, value: @book.title
+    .form-group 
+      = f.label :impression
+      = f.text_area :impression, class: "form-control"
+    = f.submit "投稿する", class: "btn btn-primary"
+- else 
+  h1 本が見つかりません。
+  = link_to "本を探す", search_books_path

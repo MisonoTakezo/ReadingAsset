@@ -27,10 +27,10 @@ class Fetcher::GoogleBook
       items.map do |item|
         BookObject.new(
           api_id: item["id"],
-          authors: item["volumeInfo"]["authors"],
-          image: thumbnail_url(item),
-          title: item["volumeInfo"]["title"],
-          description: item["volumeInfo"]["description"],
+          authors: item["volumeInfo"]["authors"] || ["Author Unknown"],
+          image: thumbnail_url(item) || "common/no-image-icon.svg",
+          title: item["volumeInfo"]["title"] || "No Title Available",
+          description: item["volumeInfo"]["description"] || "No Description Available",
           published_at: item["volumeInfo"]["publishedDate"]
         )
       end
@@ -45,15 +45,15 @@ class Fetcher::GoogleBook
     def call
       base_url = "https://www.googleapis.com/books/v1/volumes/#{api_id}"
       item = JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(base_url))))
-      return nil unless item["id"]
+      return nil if item.has_key?("error")
       logger = Logger.new('log/development.log')
       logger.debug(item)
       item = BookObject.new(
         api_id: item["id"],
-        authors: item["volumeInfo"]["authors"],
-        image: thumbnail_url(item),
-        title: item["volumeInfo"]["title"],
-        description: item["volumeInfo"]["description"],
+        authors: item["volumeInfo"]["authors"] || ["Author Unknown"],
+        image: thumbnail_url(item) || "common/no-image-icon.svg",
+        title: item["volumeInfo"]["title"] || "No Title Available",
+        description: item["volumeInfo"]["description"] || "No Description Available",
         published_at: item["volumeInfo"]["publishedDate"]
       )
     end
