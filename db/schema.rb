@@ -10,24 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_10_102452) do
+ActiveRecord::Schema.define(version: 2021_06_10_123013) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.bigint "book_id"
-    t.string "name", null: false
-    t.boolean "is_representative", null: false
+    t.string "name", limit: 100, null: false, comment: "著者名"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_authors_on_book_id"
   end
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.string "google_books_api_id", null: false
-    t.string "title", null: false
-    t.string "image"
-    t.date "published_at"
+    t.string "google_books_api_id", limit: 100, null: false, comment: "GoogleBooksAPI ID"
+    t.string "title", limit: 100, null: false, comment: "タイトル"
+    t.string "image", comment: "画像URL"
+    t.text "description", limit: 255, comment: "説明"
+    t.date "published_at", comment: "出版日"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "books_authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "book_id"
+    t.index ["author_id"], name: "index_books_authors_on_author_id"
+    t.index ["book_id"], name: "index_books_authors_on_book_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -65,7 +70,8 @@ ActiveRecord::Schema.define(version: 2021_06_10_102452) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "authors", "books"
+  add_foreign_key "books_authors", "authors"
+  add_foreign_key "books_authors", "books"
   add_foreign_key "posts", "books"
   add_foreign_key "posts", "users"
   add_foreign_key "user_remembers", "users"
