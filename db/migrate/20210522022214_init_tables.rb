@@ -18,14 +18,14 @@ class InitTables < ActiveRecord::Migration[5.2]
     end
 
     create_table :user_remembers do |t|
-      t.references :user
+      t.references :user, foreign_key: true
       t.string "token_digest", limit: 100, null: false, comment: "トークンハッシュ"
 
       t.timestamps
     end
 
     create_table :posts do |t|
-      t.references :user
+      t.references :user, foreign_key: true
       t.integer :status, unsigned: true, limit: 1, null: false, default: 1, comment: "ステータス 0: unverified, 1: verified, 2: deleted"
       t.string :title, limit: 100, null: false, comment: 'タイトル'
       t.text :impression, comment: '感想'
