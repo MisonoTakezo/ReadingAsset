@@ -9,16 +9,17 @@ class Fetcher::GoogleBook
     attribute :authors, String
     attribute :image, String
     attribute :title, String
+    attribute :description, String
     attribute :published_at, DateTime
   end
 
-  class BookIndex < BaseService
+  class BookSearch < BaseService
     initialize_with :keyword
 
     is_callable
 
     def call
-      base_url = "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&country=JP"
+      base_url = "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&country=JP&maxResults=40"
       res =  JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(base_url))))
       items = res["items"]
       return [] unless items
@@ -29,14 +30,32 @@ class Fetcher::GoogleBook
           authors: item["volumeInfo"]["authors"],
           image: thumbnail_url(item),
           title: item["volumeInfo"]["title"],
+          description: item["volumeInfo"]["description"],
           published_at: item["volumeInfo"]["publishedDate"]
         )
       end
     end
-      
-    private
-      def thumbnail_url(item)
-        item["volumeInfo"]["imageLinks"]["smallThumbnail"] if item["volumeInfo"]["imageLinks"].present?
-      end
+  end
+
+  class BookIdentify < BaseService
+    initialize_with :api_id
+
+    is_callable
+
+    def call
+      base_url = "https://www.googleapis.com/books/v1/volumes/#{api_id}"
+      item = JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(base_url))))
+      return nil unless item["id"]
+      logger = Logger.new('log/development.log')
+      logger.debug(item)
+      item = BookObject.new(
+        api_id: item["id"],
+        authors: item["volumeInfo"]["authors"],
+        image: thumbnail_url(item),
+        title: item["volumeInfo"]["title"],
+        description: item["volumeInfo"]["description"],
+        published_at: item["volumeInfo"]["publishedDate"]
+      )
+    end
   end
 end
