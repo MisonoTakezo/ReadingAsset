@@ -3,5 +3,8 @@
 
 class BaseService
   extend SmartInit
-  include Rails.application.routes.url_helpers
+  
+  def thumbnail_url(item)
+    item["volumeInfo"]["imageLinks"]["smallThumbnail"] if item["volumeInfo"]["imageLinks"].present?
+  end
 end
