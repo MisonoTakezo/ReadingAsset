@@ -20,9 +20,6 @@
 class User < ApplicationRecord
   has_secure_password
 
-  validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
-
   has_many :user_remembers, dependent: :destroy
   has_many :posts, dependent: :destroy
 
@@ -36,7 +33,7 @@ class User < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX }, on: :create
 
   validates :password, length: { minimum: 8, maximum: 50 }, on: :create
-  validates :name, presence: true, length: { maximum: 50 }, on: :create, on: :update
+  validates :name, presence: true, length: { maximum: 50 }, on: [:create, :update]
 
   enum status: { unverified: 0, verified: 1, deleted: 2 }, _prefix: true
 
