@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_112015) do
+ActiveRecord::Schema.define(version: 2021_06_10_102452) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.bigint "book_id"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2021_06_07_112015) do
     t.text "impression", comment: "感想"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "book_id", null: false
+    t.index ["book_id"], name: "index_posts_on_book_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -64,4 +66,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_112015) do
   end
 
   add_foreign_key "authors", "books"
+  add_foreign_key "posts", "books"
+  add_foreign_key "posts", "users"
+  add_foreign_key "user_remembers", "users"
 end
