@@ -7,17 +7,17 @@ class PostsController < ApplicationController
   before_action :must_be_post_owner, only: [:edit, :update, :destroy]
 
   def index
-    @books = Fetcher::GoogleBook::BookSearch.call(keyword: "rails")
   end
 
   def new
     @book = Fetcher::GoogleBook::BookIdentify.call(api_id: new_post_params[:api_id])
-    @post = Post.new
+    @post_form = PostForm.new
   end
 
   def create
-    @post = Post.new(create_post_params)
-    if @post.save
+    @post_form = PostForm.new(create_post_params)
+
+    if @post_form.save
       flash[:success] = "投稿しました。"
       redirect_to @post
     else
@@ -52,9 +52,8 @@ class PostsController < ApplicationController
   end
 
   private
-
     def create_post_params
-      params.require(:post).permit(:user_id, :title, :impression)
+      params.require(:post_form).permit(:user_id, :impression, :title, :image, :description, :published_at, :authors)
     end
 
     def update_post_params
