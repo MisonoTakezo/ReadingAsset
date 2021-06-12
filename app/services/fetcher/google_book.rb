@@ -5,7 +5,7 @@ class Fetcher::GoogleBook
   class BookObject
     include Virtus.model
 
-    attribute :api_id, Integer
+    attribute :google_books_api_id, String
     attribute :authors, String
     attribute :image, String
     attribute :title, String
@@ -26,8 +26,8 @@ class Fetcher::GoogleBook
       
       items.map do |item|
         BookObject.new(
-          api_id: item["id"],
-          authors: item["volumeInfo"]["authors"] || ["Author Unknown"],
+          google_books_api_id: item["id"],
+          authors: item["volumeInfo"]["authors"] || ["AuthorUnknown"],
           image: thumbnail_url(item) || "common/no-image-icon.svg",
           title: item["volumeInfo"]["title"] || "No Title Available",
           description: item["volumeInfo"]["description"] || "No Description Available",
@@ -38,19 +38,18 @@ class Fetcher::GoogleBook
   end
 
   class BookIdentify < BaseService
-    initialize_with :api_id
+    initialize_with :google_books_api_id
 
     is_callable
 
     def call
-      base_url = "https://www.googleapis.com/books/v1/volumes/#{api_id}"
+      base_url = "https://www.googleapis.com/books/v1/volumes/#{google_books_api_id}"
       item = JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(base_url))))
       return nil if item.has_key?("error")
-      logger = Logger.new('log/development.log')
-      logger.debug(item)
+
       item = BookObject.new(
-        api_id: item["id"],
-        authors: item["volumeInfo"]["authors"] || ["Author Unknown"],
+        google_books_api_id: item["id"],
+        authors: item["volumeInfo"]["authors"] || ["AuthorUnknown"],
         image: thumbnail_url(item) || "common/no-image-icon.svg",
         title: item["volumeInfo"]["title"] || "No Title Available",
         description: item["volumeInfo"]["description"] || "No Description Available",

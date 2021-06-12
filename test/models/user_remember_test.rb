@@ -4,7 +4,7 @@
 #
 #  id                             :bigint           not null, primary key
 #  user_id                        :bigint
-#  token_digest(トークンハッシュ) :string(100)      not null
+#  token_digest(トークンハッシュ) :string(1000)     not null
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
 #

@@ -4,7 +4,7 @@
 #
 #  id                             :bigint           not null, primary key
 #  user_id                        :bigint
-#  token_digest(トークンハッシュ) :string(100)      not null
+#  token_digest(トークンハッシュ) :string(1000)     not null
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
 #
@@ -15,11 +15,6 @@
 # Foreign Keys
 #
 #  fk_rails_...  (user_id => users.id)
-#
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
 #
 one: {}
 # column: value

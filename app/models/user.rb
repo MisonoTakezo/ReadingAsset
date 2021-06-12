@@ -5,11 +5,12 @@
 # Table name: users
 #
 #  id                                                                :bigint           not null, primary key
+#  status(ステータス 0:invisible, 1: visible, 2:deleted)             :integer          default("unverified"), unsigned, not null
 #  name(名前)                                                        :string(100)      not null
 #  email(メールアドレス)                                             :string(100)      not null
-#  introduction(自己紹介)                                            :text(65535)
+#  bio(自己紹介)                                                     :text(65535)
 #  password_digest(パスワードハッシュ値)                             :string(255)      not null
-#  password_reset_token(パスワード再設定トークン)                    :string(255)      not null
+#  password_reset_token(パスワード再設定トークン)                    :string(255)
 #  password_reset_token_expired_at(パスワード再設定トークン有効期限) :datetime
 #  profile_image(プロフィール画像)                                   :string(255)
 #  verification_token(有効化トークン)                                :string(255)

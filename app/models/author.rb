@@ -8,8 +8,8 @@
 #  updated_at   :datetime         not null
 #
 class Author < ApplicationRecord
-  validates :name, length: { maximum: 20 }, presence: true
+  validates :name, length: { maximum: 50 }, presence: true
   
   has_many :books_authors
-  has_many :post, through: :books_authors
+  has_many :book, through: :books_authors
 end

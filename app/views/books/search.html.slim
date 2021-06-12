@@ -7,4 +7,4 @@ h1 hello
             ul 
               li = book.title 
               = image_tag image_url(book.image)
-              = link_to "感想を書く", new_post_path(api_id: book.api_id)
+              = link_to "感想を書く", new_post_path(google_books_api_id: book.google_books_api_id)
