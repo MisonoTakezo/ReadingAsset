@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @book = Fetcher::GoogleBook::BookIdentify.call(api_id: new_post_params[:api_id])
+    @book = Fetcher::GoogleBook::BookIdentify.call(google_books_api_id: new_post_params[:google_books_api_id])
     @post_form = PostForm.new
   end
 
@@ -19,10 +19,10 @@ class PostsController < ApplicationController
 
     if @post_form.save
       flash[:success] = "投稿しました。"
-      redirect_to @post
+      redirect_to @post_form.post
     else
-      flash[:error] = "投稿できませんでした。"
-      redirect_to new_post_path
+      flash[:error] = "投稿に失敗しました。再度お試しください。"
+      redirect_to new_post_path(google_books_api_id: create_post_params[:google_books_api_id])
     end
   end
 
@@ -52,8 +52,9 @@ class PostsController < ApplicationController
   end
 
   private
+
     def create_post_params
-      params.require(:post_form).permit(:user_id, :impression, :title, :image, :description, :published_at, :authors)
+      params.require(:post_form).permit(:user_id, :impression, :title, :image, :description, :published_at, :authors, :google_books_api_id)
     end
 
     def update_post_params
@@ -61,7 +62,7 @@ class PostsController < ApplicationController
     end
 
     def new_post_params
-      params.permit(:api_id)
+      params.permit(:google_books_api_id)
     end
 
     def set_post

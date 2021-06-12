@@ -5,15 +5,23 @@
   - @book.authors.each do |author|
     p = author
   p = @book.description.html_safe
-  = form_with model: @post, local: true, class: "form-horizontal" do |f|
-    .form-group
-      = f.hidden_field :user_id, value: @current_user.id
-    .form-group
-      = f.hidden_field :title, value: @book.title
-    .form-group 
-      = f.label :impression
-      = f.text_area :impression, class: "form-control"
+
+  = form_for(@post_form, url: posts_path, html: { class: "login-form" }) do |f|
+    = f.hidden_field :google_books_api_id, value: @book.google_books_api_id
+    = f.hidden_field :title, value: @book.title
+    = f.hidden_field :image, value: @book.image
+    = f.hidden_field :description, value: @book.description
+    = f.hidden_field :published_at, value: @book.published_at
+    = f.hidden_field :authors, value: @book.authors
+    = f.hidden_field :user_id, value: @current_user.id
+    = f.label :impression
+    = f.text_area :impression, class: "form-control"
     = f.submit "投稿する", class: "btn btn-primary"
+
+    - if @post_form.errors.any?
+            .login-errors
+              - @post_form.errors.full_messages.each do |message|
+                p.login-error-text = message
 - else 
   h1 本が見つかりません。
   = link_to "本を探す", search_books_path
