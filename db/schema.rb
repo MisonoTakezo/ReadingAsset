@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_10_123013) do
+ActiveRecord::Schema.define(version: 2021_05_22_022214) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "name", limit: 100, null: false, comment: "著者名"
@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2021_06_10_123013) do
   end
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.string "google_books_api_id", limit: 100, null: false, comment: "GoogleBooksAPI ID"
+    t.string "google_books_api_id", limit: 1000, null: false, comment: "GoogleBooksAPI ID"
     t.string "title", limit: 100, null: false, comment: "タイトル"
-    t.string "image", comment: "画像URL"
-    t.text "description", limit: 255, comment: "説明"
+    t.string "image", limit: 1000, comment: "画像URL"
+    t.text "description", comment: "説明"
     t.date "published_at", comment: "出版日"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,19 +37,18 @@ ActiveRecord::Schema.define(version: 2021_06_10_123013) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "book_id"
     t.integer "status", limit: 1, default: 1, null: false, comment: "ステータス 0: unverified, 1: verified, 2: deleted", unsigned: true
-    t.string "title", limit: 100, null: false, comment: "タイトル"
     t.text "impression", comment: "感想"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "book_id", null: false
     t.index ["book_id"], name: "index_posts_on_book_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "user_remembers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "token_digest", limit: 100, null: false, comment: "トークンハッシュ"
+    t.string "token_digest", limit: 1000, null: false, comment: "トークンハッシュ"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_remembers_on_user_id"
@@ -59,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_06_10_123013) do
     t.integer "status", limit: 1, default: 0, null: false, comment: "ステータス 0:invisible, 1: visible, 2:deleted", unsigned: true
     t.string "name", limit: 100, null: false, comment: "名前"
     t.string "email", limit: 100, null: false, comment: "メールアドレス"
-    t.text "introduction", comment: "自己紹介"
+    t.text "bio", comment: "自己紹介"
     t.string "password_digest", null: false, comment: "パスワードハッシュ値"
     t.string "password_reset_token", comment: "パスワード再設定トークン"
     t.datetime "password_reset_token_expired_at", comment: "パスワード再設定トークン有効期限"
