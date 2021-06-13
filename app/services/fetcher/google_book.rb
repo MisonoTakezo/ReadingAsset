@@ -13,7 +13,13 @@ class Fetcher::GoogleBook
     attribute :published_at, DateTime
   end
 
-  class BookSearch < BaseService
+  class BaseBook < BaseService
+    def thumbnail_url(item)
+      item["volumeInfo"]["imageLinks"]["smallThumbnail"] if item["volumeInfo"]["imageLinks"].present?
+    end
+  end
+
+  class BookSearch < BaseBook
     initialize_with :keyword
 
     is_callable
@@ -37,7 +43,7 @@ class Fetcher::GoogleBook
     end
   end
 
-  class BookIdentify < BaseService
+  class BookIdentify < BaseBook
     initialize_with :google_books_api_id
 
     is_callable
