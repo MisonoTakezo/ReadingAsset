@@ -11,7 +11,7 @@
         = link_to new_post_path, class: "base-button post-link"
           h5.header-post-link 投稿する
         = link_to mypage_user_path(@current_user), class: "mypage-link"
-          - if @current_user.profile_image
+          - if @current_user.profile_image.present?
             img.person-icon src= @current_user.profile_image.url
           - else
             img.person-icon src=image_url('common/person-icon.svg')

@@ -1,10 +1,12 @@
-h1 hello
-= form_tag('/books/search', method: :get, class: "search-form")
-      .search-bar
-        = text_field_tag :q, @query, class: "search-text-field", placeholder: "本をを検索"
-      = submit_tag "検索", name: nil, class: "search-button"
-- @books.each do |book|
-            ul 
-              li = book.title 
-              = image_tag image_url(book.image)
-              = link_to "感想を書く", new_post_path(google_books_api_id: book.google_books_api_id)
+.search-container
+  = form_tag('/books/search', method: :get, class: "search-form")
+        .search-bar
+          = text_field_tag :q, @query, class: "search-text-field", placeholder: "本を検索"
+        = submit_tag "検索", name: nil, class: "search-button"
+
+  - if @books.present?
+    .search-result-wrapper
+      - @books.each do |book|
+        p.book-title = book.title 
+        = link_to new_post_path(google_books_api_id: book.google_books_api_id), class: "post-link" do
+          = image_tag image_url(book.image), class: "book-image"

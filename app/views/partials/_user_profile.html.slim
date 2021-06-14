@@ -1,11 +1,9 @@
-img.session-user-icon src="#{image_url('common/session-user-icon.svg')}"
       h1.session-title = user.name + "のプロフィール"
       .user-info-wrapper
-        - unless user.profile_image.url.nil?
+        - if user.profile_image.present?
           = image_tag user.profile_image.url, class: "add-profile-image-button" 
         - else
-          .no-profile-image 
-            p.no-image-message No image
+          = image_tag image_url("common/person-icon.svg"), class: "no-profile-image"
       .user-profile-wrapper
         p.user-bio
           = user.bio

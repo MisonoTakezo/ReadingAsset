@@ -1,13 +1,12 @@
 .session-container 
     .session-card
-      img.session-user-icon src="#{image_url('common/session-user-icon.svg')}"
       h1.session-title プロフィールの更新
 
       .user-info-wrapper
         = button_tag type: "button",
                     class: "add-profile-image-button base-button",
                     id: "add_profile_image_button" do
-          = image_tag @user.profile_image.url || "",
+          = image_tag @user.profile_image.url || image_url("common/person-icon.svg"),
                       class: "profile-image-preview #{"active" if @user.profile_image.url}",
                       id: "profile_image_preview"
       = form_with model: @user,
