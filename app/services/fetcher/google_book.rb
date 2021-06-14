@@ -20,12 +20,12 @@ class Fetcher::GoogleBook
   end
 
   class BookSearch < BaseBook
-    initialize_with :keyword
+    initialize_with :q
 
     is_callable
 
     def call
-      base_url = "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&country=JP&maxResults=40"
+      base_url = "https://www.googleapis.com/books/v1/volumes?q=#{q}&country=JP&maxResults=40"
       res =  JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(base_url))))
       items = res["items"]
       return [] unless items

@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   def search
-    @keyword = search_params[:keyword]
-    @books = Fetcher::GoogleBook::BookSearch.call(keyword: @keyword)
+    @query = search_params[:q]
+    @books = Fetcher::GoogleBook::BookSearch.call(q: @query)
   end
   def show
     @post = Post.find_by(id: params[:id], status: :visible)
@@ -9,6 +9,6 @@ class BooksController < ApplicationController
 
   private
     def search_params
-      params.permit(:keyword)
+      params.permit(:q)
     end
 end
