@@ -17,6 +17,10 @@ class Fetcher::GoogleBook
     def thumbnail_url(item)
       item["volumeInfo"]["imageLinks"]["smallThumbnail"] if item["volumeInfo"]["imageLinks"].present?
     end
+
+    def sanitize_text(item)
+      ActionView::Base.full_sanitizer.sanitize(item)
+    end
   end
 
   class BookSearch < BaseBook
@@ -36,7 +40,7 @@ class Fetcher::GoogleBook
           authors: item["volumeInfo"]["authors"] || ["AuthorUnknown"],
           image: thumbnail_url(item) || "common/no-image-icon.svg",
           title: item["volumeInfo"]["title"] || "No Title Available",
-          description: item["volumeInfo"]["description"] || "No Description Available",
+          description: sanitize_text(item["volumeInfo"]["description"]|| "No Description Available",).slice(0, 255),
           published_at: item["volumeInfo"]["publishedDate"]
         )
       end
@@ -58,7 +62,7 @@ class Fetcher::GoogleBook
         authors: item["volumeInfo"]["authors"] || ["AuthorUnknown"],
         image: thumbnail_url(item) || "common/no-image-icon.svg",
         title: item["volumeInfo"]["title"] || "No Title Available",
-        description: item["volumeInfo"]["description"] || "No Description Available",
+        description: sanitize_text(item["volumeInfo"]["description"]|| "No Description Available",).slice(0, 255),
         published_at: item["volumeInfo"]["publishedDate"]
       )
     end

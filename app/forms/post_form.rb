@@ -39,7 +39,7 @@ class PostForm
           google_books_api_id: google_books_api_id,
           title: title,
           image: image,
-          description: sanitize_text(description.slice(0, 255)),
+          description: description,
           published_at: published_at
         )
         book.save!
@@ -88,10 +88,6 @@ class PostForm
 
     def authors_arr(authors)
       authors.split(" ")
-    end
-
-    def sanitize_text(item)
-      ActionView::Base.full_sanitizer.sanitize(item)
     end
 
     def find_book_or_nil(book_api)
