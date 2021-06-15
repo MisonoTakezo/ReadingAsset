@@ -3,7 +3,7 @@ body {
 }
 .container {
   max-width: 832px;
-  margin: 80px auto 20px;
+  margin: 60px auto 20px;
   @include media-breakpoint-up(md) {
     margin-top: 100px;
   }

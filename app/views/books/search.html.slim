@@ -7,6 +7,6 @@
   - if @books.present?
     .search-result-wrapper
       - @books.each do |book|
-        p.book-title = book.title 
         = link_to new_post_path(google_books_api_id: book.google_books_api_id), class: "post-link" do
           = image_tag image_url(book.image), class: "book-image"
+          p.book-title = book.title

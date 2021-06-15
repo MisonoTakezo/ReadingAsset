@@ -1,9 +1,6 @@
       h1.session-title = user.name + "のプロフィール"
       .user-info-wrapper
-        - if user.profile_image.present?
-          = image_tag user.profile_image.url, class: "add-profile-image-button" 
-        - else
-          = image_tag image_url("common/person-icon.svg"), class: "no-profile-image"
+          = image_tag user.profile_image.url || image_url("common/person-icon.svg"), class: "add-profile-image-button" 
       .user-profile-wrapper
         p.user-bio
           = user.bio
