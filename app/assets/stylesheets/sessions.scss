@@ -170,13 +170,14 @@
     flex-direction: column;
 
     .login-field {
-      width: 100%;
+      width: 98%;
       text-align: center;
       height: 44px;
       border: solid;
       border-radius: 8px;
       border-color: #dcdcdc;
-      margin-top: 10px;
+      margin: 10px 0 0 0;
+      padding: 0;
       font-size: 1.2rem;
     }
 
@@ -189,14 +190,13 @@
     }
 
     .login-button {
-      width: 100%;
       text-align: center;
       display: block;
       border-radius: 8px;
       height: 44px;
       line-height: 44px;
       text-align: center;
-      margin-top: 20px;
+      margin: 20px 0 0;
       border: none;
       font-size: 1.4rem;
       font-weight: 500;
