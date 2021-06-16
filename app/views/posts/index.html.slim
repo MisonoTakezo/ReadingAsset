@@ -1,1 +1,16 @@
-h1 hello this is Posts#Index
+.post-container
+  - @posts.each do |post|
+    .user-info-wrapper
+      = link_to user_path(post.user), class: "user-path" do 
+        = image_tag image_url(post.user.profile_image.url), class: "user-profile"
+      p.user-name = post.user.name
+    .book-info-wrapper 
+      .book-info-left
+        = link_to post_path(post) do
+          = image_tag image_url(post.book.image), class: "book-image"
+      .book-info-right
+        .book-info-detail
+          h4.book-title = post.book.title 
+          - post.book.authors.each do |author|
+            p.book-author = author.name
+        p.book-description = post.impression
