@@ -1,9 +1,20 @@
-h1.mt-2 投稿内容の編集
-= form_with model: @post, class: "form-horizontal" do |f|
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: "form-control"
-  .form-group 
-    = f.label :impression
-    = f.text_field :impression, class: "form-control"
-  = f.submit "更新する", class: "btn btn-primary"
+.post-container
+  h1.post-title 感想を修正する
+  .book-info-wrapper 
+    .book-info-left
+      = image_tag image_url(@post.book.image), class: "book-image"
+    .book-info-right
+      h4.book-title = @post.book.title 
+      - @post.book.authors.each do |author|
+        p.book-author = author.name
+      p.book-description = @post.book.description
+  .book-impression-wrapper
+    h2.impression-title 感想
+    = form_for(@post, url: post_path, html: { class: "post-form" }) do |f|
+      = f.text_area :impression, placeholder: " (500文字以内)",class: "impression-text"
+      = f.submit "更新", class: "post-button base-button"
+
+      - if @post.errors.any?
+              .login-errors
+                - @post_form.errors.full_messages.each do |message|
+                  p.login-error-text = message

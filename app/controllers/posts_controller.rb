@@ -3,7 +3,7 @@
 class PostsController < ApplicationController
   before_action :login_required, only: [:new, :edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :current_user, only: [:index, :show]
+  before_action :current_user, only: [:index, :show, :edit, :update]
   before_action :must_be_post_owner, only: [:edit, :update, :destroy]
 
   def index
@@ -30,9 +30,13 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id], status: :visible)
   end
 
-  def edit; end
+  def edit
+    @post = Post.find_by(id: params[:id], status: :visible)
+  end
 
   def update
+    @post = Post.find_by(id: params[:id], status: :visible)
+
     if @post.update(update_post_params)
       flash[:success] = "更新しました。"
       redirect_to @post
@@ -58,7 +62,7 @@ class PostsController < ApplicationController
     end
 
     def update_post_params
-      params.require(:post).permit(:title, :impression)
+      params.require(:post).permit(:impression)
     end
 
     def new_post_params
