@@ -1,4 +1,4 @@
-      h1.session-title = user.name + "のプロフィール"
+      p.session-title = user.name + "のプロフィール"
       .user-info-wrapper
           = image_tag user.profile_image.url || image_url("common/person-icon.svg"), class: "add-profile-image-button" 
       .user-profile-wrapper

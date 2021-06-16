@@ -23,6 +23,17 @@
     }
   }
 
+  .user-card {
+    background-color: white;
+    padding: 20px 25px 0;
+
+    .transition-wrapper{
+      margin: 3px 10% 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
   .user-info-wrapper {
     max-width: calc(100% - 50px);
     width: 100%;
@@ -39,12 +50,6 @@
       @include media-breakpoint-up(md) {
         width: 200px;
         height: 200px;
-      }
-
-      .no-image-message {
-        font-size: 1rem;
-        font-weight: bold;
-        color: #696969;
       }
     }
   
@@ -129,7 +134,7 @@
     .user-bio {
       width: 75%;
       margin: 10px auto 0;
-      font-size: 1rem;
+      font-size: 1.3rem;
       color: $text-color;
       overflow-wrap: break-word;
     }
@@ -149,19 +154,12 @@
   }
 
   .session-title {
-    width: 75%;
-    margin: 15px auto 10px;
     text-align: center;
-    font-size: 1.3rem;
-    line-height: 1.3rem;
+    font-size: 2rem;
+    line-height: 2rem;
     font-weight: 700;
     color: #696969;
     overflow-wrap: normal;
-
-    @include media-breakpoint-up(md) {
-      font-size: 1.5rem;
-      line-height: 1.5rem;
-    }
   }
 
   .login-form {
