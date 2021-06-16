@@ -7,9 +7,9 @@
   .post-container
     - @posts.each do |post|
       .user-info-wrapper
-        = link_to user_path(post.user), class: "user-path" do 
-          = image_tag post.user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
-        p.user-name = post.user.name
+        = link_to user_path(@user), class: "user-path" do 
+          = image_tag @user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
+        p.user-name = @user.name
       .book-info-wrapper 
         .book-info-left
           = link_to post_path(post) do
