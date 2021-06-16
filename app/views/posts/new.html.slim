@@ -1,27 +1,31 @@
-- if @book.present?
-  h1.mt-2 感想を投稿する
-  h1 = @book.title 
-  = image_tag image_url(@book.image)
-  - @book.authors.each do |author|
-    p = author
-  p = @book.description.html_safe
+.post-container
+  - if @book.present?
+    h1.post-title 感想を投稿する
+    .book-info-wrapper 
+      .book-info-left
+        = image_tag image_url(@book.image), class: "book-image"
+      .book-info-right
+        h4.book-title = @book.title 
+        - @book.authors.each do |author|
+          p.book-author = author
+        p.book-description = @book.description
+    .book-impression-wrapper
+      h2.impression-title 感想
+      = form_for(@post_form, url: posts_path, html: { class: "post-form" }) do |f|
+        = f.hidden_field :google_books_api_id, value: @book.google_books_api_id
+        = f.hidden_field :title, value: @book.title
+        = f.hidden_field :image, value: @book.image
+        = f.hidden_field :description, value: @book.description
+        = f.hidden_field :published_at, value: @book.published_at
+        = f.hidden_field :authors, value: @book.authors
+        = f.hidden_field :user_id, value: @current_user.id
+        = f.text_area :impression, placeholder: " (500文字以内)",class: "impression-text"
+        = f.submit "投稿", class: "post-button base-button"
 
-  = form_for(@post_form, url: posts_path, html: { class: "login-form" }) do |f|
-    = f.hidden_field :google_books_api_id, value: @book.google_books_api_id
-    = f.hidden_field :title, value: @book.title
-    = f.hidden_field :image, value: @book.image
-    = f.hidden_field :description, value: @book.description
-    = f.hidden_field :published_at, value: @book.published_at
-    = f.hidden_field :authors, value: @book.authors
-    = f.hidden_field :user_id, value: @current_user.id
-    = f.label :impression
-    = f.text_area :impression, class: "form-control"
-    = f.submit "投稿する", class: "btn btn-primary"
-
-    - if @post_form.errors.any?
-            .login-errors
-              - @post_form.errors.full_messages.each do |message|
-                p.login-error-text = message
-- else 
-  h1 本が見つかりません。
-  = link_to "本を探す", search_books_path
+        - if @post_form.errors.any?
+                .login-errors
+                  - @post_form.errors.full_messages.each do |message|
+                    p.login-error-text = message
+  - else 
+    h1 本が見つかりません。
+    = link_to "本を探す", search_books_path
