@@ -77,7 +77,7 @@ class PostForm
         )
         @post.save!
       else
-        @post.update!(impression: impression)
+        @post.update!(status: :visible, impression: impression)
       end
     end
 
