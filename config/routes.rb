@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get :verify, on: :member
   end
 
-  resources :posts, only: [:index, :show, :new, :create, :edit, :destroy]
+  resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   resources :books, only: [] do
     get :search, on: :collection
