@@ -57,14 +57,14 @@ class PostForm
           author.save!
         end
 
-        books_authors = find_books_authors_or_nil(author.id, book.id)
+        books_author = find_books_author_or_nil(author.id, book.id)
 
-        unless books_authors.present?
-          books_authors = BooksAuthors.new(
+        unless books_author.present?
+          books_author = BooksAuthor.new(
             author_id: author.id,
             book_id: book.id
           )
-          books_authors.save!
+          books_author.save!
         end
       end
 
@@ -100,9 +100,9 @@ class PostForm
       return author
     end
 
-    def find_books_authors_or_nil(author_id, book_id)
-      books_authors = BooksAuthors.find_by(author_id: author_id, book_id: book_id)
-      return books_authors
+    def find_books_author_or_nil(author_id, book_id)
+      books_author = BooksAuthor.find_by(author_id: author_id, book_id: book_id)
+      return books_author
     end
 
     def find_post_or_nil(user_id, book_id)
