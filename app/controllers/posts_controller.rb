@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   before_action :must_be_post_owner, only: [:edit, :update, :destroy]
 
   def index
+    @posts = Post.all.order(id: :desc)
   end
 
   def new
