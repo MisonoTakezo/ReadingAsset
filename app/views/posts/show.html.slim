@@ -1,10 +1,20 @@
-.card.mb-2
-  h5.card-header 感想
-  .card-body 
-    p.card-text= @post.impression
-- if @post.created_by?(@current_user)
-  ul.navbar-nav.ml-auto
-    li.nav-item 
-      = link_to "編集する", edit_post_path(@post), class: "nav-link"
-    li.nav-item
-      = link_to "削除する", post_path(@post), class: "nav-link", method: :delete, data: {confirm: "本当に削除しますか？"}
+.post-container
+  .user-info-wrapper
+    = link_to user_path(@post.user), class: "user-path" do 
+      = image_tag image_url(@post.user.profile_image.url), class: "user-profile"
+    p.user-name = @post.user.name
+  .book-info-wrapper 
+    .book-info-left
+      = image_tag image_url(@post.book.image), class: "book-image"
+    .book-info-right
+      h4.book-title = @post.book.title 
+      - @post.book.authors.each do |author|
+        p.book-author = author.name
+      p.book-description = @post.book.description
+  .book-impression-wrapper
+      p.impression-text-show = @post.impression
+
+  - if @post.created_by?(@current_user)
+    .transition-wrapper
+      = link_to "編集する", edit_post_path(@post), class: "edit-button base-button"
+      = link_to "削除する", post_path(@post), class: "delete-button base-button", method: :delete, data: {confirm: "本当に削除しますか？"}
