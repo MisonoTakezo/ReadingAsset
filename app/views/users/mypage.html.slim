@@ -1,17 +1,17 @@
 .user-container
   .session-container 
     .user-card
-      = render partial: 'partials/user_profile', locals: { user: @current_user}
+      = render partial: 'partials/user_profile', locals: { user: @user}
       .transition-wrapper
-        = link_to "ログアウト", logout_path(@current_user), method: :delete, class: "delete-button base-button"
-        = link_to "編集する", edit_user_path(@current_user), class: "edit-button base-button"
+        = link_to "ログアウト", logout_path(@user), method: :delete, class: "delete-button base-button"
+        = link_to "編集する", edit_user_path(@user), class: "edit-button base-button"
 
   .post-container
     - @posts.each do |post|
       .user-info-wrapper
-        = link_to user_path(post.user), class: "user-path" do 
-          = image_tag image_url(post.user.profile_image.url), class: "user-profile"
-        p.user-name = post.user.name
+        = link_to user_path(@user), class: "user-path" do 
+          = image_tag @user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
+        p.user-name = @user.name
       .book-info-wrapper 
         .book-info-left
           = link_to post_path(post) do

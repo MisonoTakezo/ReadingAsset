@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if @current_user && @current_user == @user
       redirect_to mypage_user_path(@user) and return
     end
-    @posts = @user.posts.visible.order(updated_at: :desc)
+    @posts = Post.where(user_id: @user.id, status: :visible).includes(book: :authors)
   end
 
   def mypage
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     unless  @current_user && @current_user == @user
       redirect_to user_path(@user) and return
     end
-    @posts = @user.posts.visible.order(updated_at: :desc)
+    @posts = Post.where(user_id: @user.id, status: :visible).includes(book: :authors)
   end
 
   def edit

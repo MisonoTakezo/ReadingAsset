@@ -2,7 +2,7 @@
   - @posts.each do |post|
     .user-info-wrapper
       = link_to user_path(post.user), class: "user-path" do 
-        = image_tag image_url(post.user.profile_image.url), class: "user-profile"
+        = image_tag post.user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
       p.user-name = post.user.name
     .book-info-wrapper 
       .book-info-left

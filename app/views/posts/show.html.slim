@@ -5,7 +5,7 @@
     p.user-name = @post.user.name
   .book-info-wrapper 
     .book-info-left
-      = image_tag image_url(@post.book.image), class: "book-image"
+      = image_tag @post.book.image || image_url("common/person-icon.svg"), class: "book-image"
     .book-info-right
       h4.book-title = @post.book.title 
       - @post.book.authors.each do |author|
