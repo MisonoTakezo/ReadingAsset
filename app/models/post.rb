@@ -23,7 +23,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
-  validates :impression, length: { maximum: 1000 }
+  validates :impression, length: { maximum: 500 }
 
   belongs_to :book
   belongs_to :user

@@ -27,6 +27,7 @@ class PostForm
 
   validates :google_books_api_id, presence: true
   validates :title, presence: true
+  validates :impression, length: { maximum: 500 }
 
   def save
     return false if invalid?

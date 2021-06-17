@@ -19,7 +19,7 @@
         = f.hidden_field :published_at, value: @book.published_at
         = f.hidden_field :authors, value: @book.authors
         = f.hidden_field :user_id, value: @current_user.id
-        = f.text_area :impression, placeholder: " (500文字以内)",class: "impression-text"
+        = f.text_area :impression, placeholder: " (500文字以内)",class: "impression-text", maxlength: "500"
         = f.submit "投稿", class: "post-button base-button"
 
         - if @post_form.errors.any?
