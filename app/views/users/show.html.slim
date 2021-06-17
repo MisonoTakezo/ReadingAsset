@@ -5,7 +5,7 @@
       .transition-wrapper
 
   .post-container
-    - @posts.each do |post|
+    - @user.posts.each do |post|
       .user-info-wrapper
         = link_to user_path(@user), class: "user-path" do 
           = image_tag @user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
