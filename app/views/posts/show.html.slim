@@ -12,6 +12,9 @@
         p.book-author = author.name
       p.book-description = @post.book.description
   .book-impression-wrapper
+    - unless @post.impression.length > 0
+      p.impression-text-show まだ感想はありません。
+    - else 
       p.impression-text-show = @post.impression
 
   - if @post.created_by?(@current_user)
