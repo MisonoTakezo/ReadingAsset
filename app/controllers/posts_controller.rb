@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :login_required, only: [:new, :edit, :update, :destroy]
+  before_action :login_required, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :current_user, only: [:index, :show, :edit, :update]
   before_action :must_be_post_owner, only: [:edit, :update, :destroy]
 
   def index
@@ -27,16 +26,11 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find_by(id: params[:id], status: :visible)
-  end
+  def show; end
 
-  def edit
-    @post = Post.find_by(id: params[:id], status: :visible)
-  end
+  def edit; end
 
   def update
-    @post = Post.find_by(id: params[:id], status: :visible)
 
     if @post.update(update_post_params)
       flash[:success] = "更新しました。"
@@ -71,7 +65,7 @@ class PostsController < ApplicationController
     end
 
     def set_post
-      @post = Post.find_by(id: params[:id], status: :visible)
+      @post = Post.includes(book: :authors).find_by(id: params[:id], status: :visible)
       unless @post
         flash[:error] = "この投稿は存在しません"
         redirect_to root_path and return

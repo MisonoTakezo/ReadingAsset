@@ -60,6 +60,13 @@ class User < ApplicationRecord
     end
   end
 
+  def valid_posts
+    self.posts
+        .visible
+        .order(updated_at: :desc)
+        .includes(book: :authors)
+  end
+
   private
     def new_token
       SecureRandom.urlsafe_base64

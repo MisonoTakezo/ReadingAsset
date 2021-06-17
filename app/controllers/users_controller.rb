@@ -23,19 +23,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(posts: {book: :authors}).order("posts.updated_at desc").find_by(id: params[:id], status: :verified)
+    @user = User.find_by(id: params[:id], status: :verified)
 
     if @current_user && @current_user == @user
       redirect_to mypage_user_path(@user) and return
     end
+
+    @posts = @user.valid_posts
   end
 
   # GET /users/:id/mypage
   def mypage
-    @user = User.includes(posts: {book: :authors}).order("posts.updated_at desc").find_by(id: params[:id], status: :verified)
+    @user = User.find_by(id: params[:id], status: :verified)
+
     unless  @current_user && @current_user == @user
       redirect_to user_path(@user) and return
     end
+
+    @posts = @user.valid_posts
   end
 
   def edit

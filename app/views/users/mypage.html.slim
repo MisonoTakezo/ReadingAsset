@@ -7,7 +7,7 @@
         = link_to "編集する", edit_user_path(@user), class: "edit-button base-button"
 
   .post-container
-    - @user.posts.each do |post|
+    - @posts.each do |post|
       .user-info-wrapper
         = link_to user_path(@user), class: "user-path" do 
           = image_tag @user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
