@@ -7,7 +7,7 @@
           br
           | Asset
     .header-center 
-      = form_tag('books/search', method: :get, class: "search-bar")
+      = form_tag("/books/search", method: :get, class: "search-bar")
         img.search-icon src=image_url('common/search-icon.svg')
         = text_field_tag :q, "", class: "search-text-field", placeholder: "本を検索"
     .header-right

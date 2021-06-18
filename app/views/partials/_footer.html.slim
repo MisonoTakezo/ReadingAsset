@@ -1,0 +1,15 @@
+.footer-container 
+  .footer-upper
+    .footer-upper-left
+      = link_to root_path, class: "root-path"
+        p.footer-link 使い方
+    .footer-upper-center 
+      = link_to search_books_path, class: "book-search-path"
+        p.footer-link 本を検索
+      p.logo 
+        | Reading 
+        br 
+        | Asset
+    .footer-upper-right 
+      = link_to root_path, class: "root-path"
+        p.footer-link 投稿を見る

@@ -25,7 +25,10 @@ module Authenticate
   end
 
   def login_required
-    return redirect_to login_path unless current_user
+    unless current_user
+      flash[:error] = "ログインが必要です"
+      redirect_to login_path
+    end
   end
 
   def logout_required

@@ -53,9 +53,9 @@ class User < ApplicationRecord
   end
 
   def remember_authenticated?(token)
-    return false if remembers.blank?
+    return false if user_remembers.blank?
 
-    remembers.any? do |remember|
+    user_remembers.any? do |remember|
       BCrypt::Password.new(remember.token_digest).is_password?(token)
     end
   end
