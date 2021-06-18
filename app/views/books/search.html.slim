@@ -10,3 +10,7 @@
         = link_to new_post_path(google_books_api_id: book.google_books_api_id), class: "post-link" do
           = image_tag image_url(book.image), class: "book-image"
           p.book-title = book.title
+  - else 
+    .no-content-wrapper
+      = image_tag image_url("common/search-icon.svg"), class: "no-content-image"
+      p.no-content-message 検索結果がありません
