@@ -27,5 +27,7 @@
                   - @post_form.errors.full_messages.each do |message|
                     p.login-error-text = message
   - else 
-    h1 本が見つかりません。
-    = link_to "本を探す", search_books_path
+    .no-book-wrapper 
+      =image_tag image_url("common/notebook-icon.svg"), class: "no-book-image"
+      p.no-book-message 本が見つかりません
+      = link_to "本を探す", search_books_path, class: "book-search-link"
