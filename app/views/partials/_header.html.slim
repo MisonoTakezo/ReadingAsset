@@ -6,10 +6,12 @@
           | Reading
           br
           | Asset
+    .header-center 
+      = form_tag('books/search', method: :get, class: "search-bar")
+        img.search-icon src=image_url('common/search-icon.svg')
+        = text_field_tag :q, "", class: "search-text-field", placeholder: "本を検索"
     .header-right
       - if logged_in?
-        = link_to new_post_path, class: "base-button post-link"
-          h5.header-post-link 投稿する
         = link_to mypage_user_path(@current_user), class: "mypage-link"
           - if @current_user.profile_image.present?
             img.person-icon src= @current_user.profile_image.url
