@@ -7,18 +7,23 @@
         = link_to "編集する", edit_user_path(@user), class: "edit-button base-button"
 
   .post-container
-    - @posts.each do |post|
-      .user-info-wrapper
-        = link_to user_path(@user), class: "user-path" do 
-          = image_tag @user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
-        p.user-name = @user.name
-      .book-info-wrapper 
-        .book-info-left
-          = link_to post_path(post) do
-            = image_tag image_url(post.book.image), class: "book-image"
-        .book-info-right
-          .book-info-detail
-            h4.book-title = post.book.title 
-            - post.book.authors.each do |author|
-              p.book-author = author.name
-          p.book-description = post.impression
+    - if @posts.present?
+      - @posts.each do |post|
+        .user-info-wrapper
+          = link_to user_path(@user), class: "user-path" do 
+            = image_tag @user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
+          p.user-name = @user.name
+        .book-info-wrapper 
+          .book-info-left
+            = link_to post_path(post) do
+              = image_tag image_url(post.book.image), class: "book-image"
+          .book-info-right
+            .book-info-detail
+              h4.book-title = post.book.title 
+              - post.book.authors.each do |author|
+                p.book-author = author.name
+            p.book-description = post.impression
+    - else
+      .no-content-wrapper
+        = image_tag image_url("common/notebook-icon.svg"), class: "no-content-image"
+        p.no-content-message 投稿がありません
