@@ -3,11 +3,7 @@ body {
   background-color: #dcdcdc;
 }
 .container {
-  max-width: 832px;
-  margin: 60px auto 20px;
-  @include media-breakpoint-up(md) {
-    margin-top: 100px;
-  }
+  margin: 88px auto;
 }
 
 .base-button {

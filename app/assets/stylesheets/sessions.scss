@@ -2,18 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .session-container {
-  .session-card {
-    background-color: white;
-    border: none;
-    border-color: #a9a9a9;
-    border-radius: 20px;
-    margin: 46px auto;
-    padding: 35px 22px;
+  width: 90%;
+  margin: 120px auto 0;
+  min-height: 70vh;
+  background-color: white;
+  border-radius: 15px;
 
-    @include media-breakpoint-up(md) {
-      max-width: 500px;
-      margin: 150px auto 0;
-      padding: 35px 22px;
+  @include media-breakpoint-up(lg){
+    width: 50%;
+  }
+
+  .session-card {
+    padding: 20% 10%;
+
+    @include media-breakpoint-up(lg){
+      padding: 10% 5%;
     }
 
     .transition-wrapper{
@@ -168,10 +171,10 @@
     flex-direction: column;
 
     .login-field {
-      width: 98%;
+      width: 100%;
       text-align: center;
       height: 44px;
-      border: solid;
+      border: solid 1px;
       border-radius: 8px;
       border-color: #dcdcdc;
       margin: 10px 0 0 0;

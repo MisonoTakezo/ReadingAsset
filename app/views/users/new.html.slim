@@ -1,18 +1,18 @@
 .session-container 
-    .session-card
-      img.session-user-icon src="#{image_url('common/person-icon.svg')}"
-      h1.session-title 新規登録
+  .session-card
+    img.session-user-icon src="#{image_url('common/person-icon.svg')}"
+    h1.session-title 新規登録
 
-      = form_with model: @user, local: true , class: "login-form" do |f|
-        = f.text_field :name, placeholder: "名前", class: 'login-field'
-        = f.text_field :email, placeholder: "メールアドレス", class: 'login-field'
-        = f.password_field :password, placeholder: "パスワード(8文字以上)", class: 'login-field'
-        = f.password_field :password_confirmation, placeholder: "パスワード(確認用)", class: 'login-field'
-        = f.submit '登録する', class: 'base-button login-button', data: { disable_with: "登録しています..." }
+    = form_with model: @user, local: true , class: "login-form" do |f|
+      = f.text_field :name, placeholder: "名前", class: 'login-field'
+      = f.text_field :email, placeholder: "メールアドレス", class: 'login-field'
+      = f.password_field :password, placeholder: "パスワード(8文字以上)", class: 'login-field'
+      = f.password_field :password_confirmation, placeholder: "パスワード(確認用)", class: 'login-field'
+      = f.submit '登録する', class: 'base-button login-button', data: { disable_with: "登録しています..." }
 
-        - if @user.errors.any?
-          .login-errors
-            - @user.errors.full_messages.each do |message|
-              p.login-error-text = message
+      - if @user.errors.any?
+        .login-errors
+          - @user.errors.full_messages.each do |message|
+            p.login-error-text = message
 
-        = link_to "アカウントをすでにお持ちの方", login_path, class: "signup-text-link"
+      = link_to "アカウントをすでにお持ちの方", login_path, class: "signup-text-link"
