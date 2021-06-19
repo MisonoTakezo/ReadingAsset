@@ -2,5 +2,143 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .user-container {
-  background-color: white
+  width: 90%;
+  margin: 120px auto 0;
+  min-height: 70vh;
+  background-color: white;
+  border-radius: 15px;
+
+  @include media-breakpoint-up(lg){
+    width: 50%;
+  }
+
+  .user-card {
+    padding: 20px 25px 0;
+
+    .transition-wrapper{
+      margin: 3px 10% 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .session-title {
+    text-align: center;
+    font-size: 4rem;
+    line-height: 4rem;
+    font-weight: 700;
+    color: #696969;
+    overflow-wrap: normal;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
+  }
+
+  .user-info-wrapper {
+    max-width: calc(100% - 50px);
+    width: 100%;
+    margin: 30px auto 20px;
+    
+    .no-profile-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 50px auto;
+      @include media-breakpoint-up(md) {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  
+    .add-profile-image-button {
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius:50%;
+      height: 50%;
+      border: none;
+      margin: 0 auto;
+      @include media-breakpoint-up(md) {
+        width: 200px;
+        height: 200px;
+      }
+  
+      .profile-image-preview {
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        pointer-events: none;
+        object-fit: cover;
+        border-radius: 50%;
+        transform:translate(-5px, 0px);
+  
+        @include media-breakpoint-up(md) {
+          width: 200px;
+          height: 200px;
+        }
+  
+        &.active {
+          display: block;
+        }
+  
+        &.margin {
+          margin: 108px auto 0;
+        }
+      }
+    }
+  
+    .profile-image {
+      display: block;
+      width: 102px;
+      height: 102px;
+      box-shadow: 2px 8px 24px;
+      pointer-events: none;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0;
+  
+      @include media-breakpoint-up(md) {
+        margin: 0;
+        width: 238px;
+        height: 238px;
+      }
+  
+      &--default {
+        width: 102px;
+        height: 102px;
+        border-radius: 50%;
+        box-shadow: 2px 8px 24px;
+        background-image: image-url("icon/profile");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 32%;
+        margin: 43px 15px 43px 0;
+  
+        @include media-breakpoint-up(md) {
+          margin: 0;
+          width: 238px;
+          height: 238px;
+        }
+      }
+    }
+  }
+
+  .user-profile-wrapper {
+    max-width: calc(100% - 50px);
+    width: 100%;
+    margin: 10px auto 20px;
+
+    .user-bio {
+      width: 75%;
+      margin: 10px auto 0;
+      font-size: 1.3rem;
+      color: $text-color;
+      overflow-wrap: break-word;
+    }
+  }
 }

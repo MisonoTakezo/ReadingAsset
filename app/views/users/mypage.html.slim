@@ -1,10 +1,9 @@
 .user-container
-  .session-container 
-    .user-card
-      = render partial: 'partials/user_profile', locals: { user: @user}
-      .transition-wrapper
-        = link_to "ログアウト", logout_path(@user), method: :delete, class: "delete-button base-button"
-        = link_to "編集する", edit_user_path(@user), class: "edit-button base-button"
+  .user-card
+    = render partial: 'partials/user_profile', locals: { user: @user}
+    .transition-wrapper
+      = link_to "ログアウト", logout_path(@user), method: :delete, class: "delete-button base-button"
+      = link_to "編集する", edit_user_path(@user), class: "edit-button base-button"
 
   .post-container
     - if @posts.present?
