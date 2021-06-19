@@ -27,7 +27,6 @@
   }
 
   .user-card {
-    background-color: white;
     padding: 20px 25px 0;
 
     .transition-wrapper{
@@ -145,11 +144,11 @@
   
   .session-user-icon {
     display: block;
-    margin: 0 auto 5px;
-    width: 50px;
-    height: 50px;
+    margin: 0 auto 20px;
+    width: 200px;
+    height: 200px;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       margin-bottom: 15px;
       width: 100px;
       height: 100px;
@@ -158,11 +157,16 @@
 
   .session-title {
     text-align: center;
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 4rem;
+    line-height: 4rem;
     font-weight: 700;
     color: #696969;
     overflow-wrap: normal;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
   }
 
   .login-form {
@@ -173,13 +177,21 @@
     .login-field {
       width: 100%;
       text-align: center;
-      height: 44px;
-      border: solid 1px;
+      height: 100px;
+      border: solid 2px;
       border-radius: 8px;
       border-color: #dcdcdc;
-      margin: 10px 0 0 0;
+      margin: 30px 0 0 0;
       padding: 0;
-      font-size: 1.2rem;
+      font-size: 2.5rem;
+
+      @include media-breakpoint-up(lg) {
+        height: 44px;
+        border: solid 1px;
+        border-color: #dcdcdc;
+        font-size: 1.2rem;
+        margin: 10px 0 0 0;
+      }
     }
 
     textarea.login-field {
@@ -194,44 +206,70 @@
       text-align: center;
       display: block;
       border-radius: 8px;
-      height: 44px;
-      line-height: 44px;
+      height: 100px;
+      line-height: 100px;
       text-align: center;
-      margin: 20px 0 0;
+      margin: 30px 0 0;
       border: none;
-      font-size: 1.4rem;
+      font-size: 2.5rem;
       font-weight: 500;
       color: white;
       box-sizing: content-box;
       background-color: $login-button-blue;
+
+      @include media-breakpoint-up(lg) {
+        height: 44px;
+        line-height: 44px;
+        margin: 20px 0 0;
+        font-size: 1.4rem;
+      }
     }
 
     .signup-text-link {
-      margin-top: 15px;
+      margin-top: 50px;
       text-align: center;
-      line-height: 1.2rem;
-      font-size: 1.2rem;
+      line-height: 2.5rem;
+      font-size: 2.5rem;
       font-weight: 500;
       text-decoration: none;
       color: #191970;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 15px;
+        line-height: 1.2rem;
+        font-size: 1.2rem;
+      }
     }
 
     .login-errors {
       width: 100%;
       text-align: center;
-      margin-top: 10px;
-      padding: 5px 0;
+      margin-top: 30px;
+      padding: 10px 0;
       
-      border: 1px solid $error-color;
+      border: 2px solid $error-color;
       border-radius: 8px;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 10px;
+        padding: 5px 0;
+        
+        border: 1px solid $error-color;
+      }
       
       .login-error-text {
-        margin: 10px 0 0 0;
-        line-height: 1.0rem;
-        font-size: 1.0rem;
+        margin: 20px 0 0;
+        line-height: 2rem;
+        font-size: 2rem;
         font-weight: 500;
         word-break: break-word;
         color: $error-color;
+
+        @include media-breakpoint-up(lg) {
+          margin: 10px 0 0;
+          line-height: 1rem;
+          font-size: 1rem;
+        }
       }
     }
   }
