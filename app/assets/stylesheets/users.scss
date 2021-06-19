@@ -79,14 +79,14 @@
   
       .profile-image-preview {
         align-items: center;
-        width: 100px;
-        height: 100px;
+        width: 300px;
+        height: 300px;
         pointer-events: none;
         object-fit: cover;
         border-radius: 50%;
         transform:translate(-5px, 0px);
   
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
           width: 200px;
           height: 200px;
         }
@@ -156,6 +156,117 @@
       @include media-breakpoint-up(lg) {
         margin: 10px auto 0;
         font-size: 1.3rem;
+      }
+    }
+  }
+
+  .login-form {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 5px;
+      width: 80%;
+      margin: 5px auto;
+    }
+
+    .login-field {
+      width: 100%;
+      text-align: center;
+      height: 100px;
+      border: solid 2px;
+      border-radius: 8px;
+      border-color: #dcdcdc;
+      margin: 30px 0 0 0;
+      padding: 0;
+      font-size: 2.5rem;
+
+      @include media-breakpoint-up(lg) {
+        height: 44px;
+        border: solid 1px;
+        border-color: #dcdcdc;
+        font-size: 1.2rem;
+        margin: 10px 0 0 0;
+      }
+    }
+
+    textarea.login-field {
+      height: 500px;
+    }
+
+    .file-field {
+      display: none;
+    }
+
+    .login-button {
+      text-align: center;
+      display: block;
+      border-radius: 8px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      margin: 30px 0 0;
+      border: none;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: white;
+      box-sizing: content-box;
+      background-color: $login-button-blue;
+
+      @include media-breakpoint-up(lg) {
+        height: 44px;
+        line-height: 44px;
+        margin: 20px 0 0;
+        font-size: 1.4rem;
+      }
+    }
+
+    .signup-text-link {
+      margin-top: 50px;
+      text-align: center;
+      line-height: 2.5rem;
+      font-size: 2.5rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: #191970;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 15px;
+        line-height: 1.2rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    .login-errors {
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      padding: 10px 0;
+      
+      border: 2px solid $error-color;
+      border-radius: 8px;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 10px;
+        padding: 5px 0;
+        
+        border: 1px solid $error-color;
+      }
+      
+      .login-error-text {
+        margin: 20px 0 0;
+        line-height: 2rem;
+        font-size: 2rem;
+        font-weight: 500;
+        word-break: break-word;
+        color: $error-color;
+
+        @include media-breakpoint-up(lg) {
+          margin: 10px 0 0;
+          line-height: 1rem;
+          font-size: 1rem;
+        }
       }
     }
   }

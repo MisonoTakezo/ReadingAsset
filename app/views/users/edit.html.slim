@@ -1,35 +1,35 @@
-.session-container 
-    .session-card
-      h1.session-title プロフィールの更新
+.user-container 
+  .user-card
+    h1.user-title プロフィールの更新
 
-      .user-info-wrapper
-        = button_tag type: "button",
-                    class: "add-profile-image-button base-button",
-                    id: "add_profile_image_button" do
-          = image_tag @user.profile_image.url || image_url("common/person-icon.svg"),
-                      class: "profile-image-preview #{"active" if @user.profile_image.url}",
-                      id: "profile_image_preview"
-      = form_with model: @user,
-                class: "login-form" do |f|
-        = f.text_field :name,
-                      class: "login-field",
-                      placeholder: "名前",
-                      value: @user.name,
-                      required: true
-        = f.text_area :bio,
-                      class: "login-field",
-                      placeholder: "自己紹介",
-                      value: @user.bio,
-                      size: "40x10"
-        = f.file_field :profile_image,
-                      class: "file-field",
-                      accept: "image/*",
-                      value: @user.profile_image || @user.profile_image_cache
+    .user-info-wrapper
+      = button_tag type: "button",
+                  class: "add-profile-image-button base-button",
+                  id: "add_profile_image_button" do
+        = image_tag @user.profile_image.url || image_url("common/person-icon.svg"),
+                    class: "profile-image-preview #{"active" if @user.profile_image.url}",
+                    id: "profile_image_preview"
+    = form_with model: @user,
+              class: "login-form" do |f|
+      = f.text_field :name,
+                    class: "login-field",
+                    placeholder: "名前",
+                    value: @user.name,
+                    required: true
+      = f.text_area :bio,
+                    class: "login-field",
+                    placeholder: "自己紹介",
+                    value: @user.bio,
+                    size: "40x40"
+      = f.file_field :profile_image,
+                    class: "file-field",
+                    accept: "image/*",
+                    value: @user.profile_image || @user.profile_image_cache
 
-        = f.hidden_field :profile_image_cache
-        = f.submit "更新", class: "base-button login-button", data: {disable_with: "更新しています..."}
+      = f.hidden_field :profile_image_cache
+      = f.submit "更新", class: "base-button login-button", data: {disable_with: "更新しています..."}
 
-        - if @user.errors.any?
-            .login-errors
-              - @user.errors.full_messages.each do |message|
-                p.login-error-text = message
+      - if @user.errors.any?
+          .login-errors
+            - @user.errors.full_messages.each do |message|
+              p.login-error-text = message
