@@ -4,7 +4,7 @@
 .user-container {
   width: 90%;
   margin: 120px auto 0;
-  min-height: 70vh;
+  min-height: 80vh;
   background-color: white;
   border-radius: 15px;
 
@@ -15,14 +15,22 @@
   .user-card {
     padding: 20px 25px 0;
 
+    @include media-breakpoint-up(lg){
+      padding: 10% 5%;
+    }
+
     .transition-wrapper{
-      margin: 3px 10% 20px;
+      margin: 10px 10% 30px;
       display: flex;
       justify-content: flex-end;
+
+      @include media-breakpoint-up(lg) {
+        margin: 3px 10% 20px;
+      }
     }
   }
 
-  .session-title {
+  .user-title {
     text-align: center;
     font-size: 4rem;
     line-height: 4rem;
@@ -57,13 +65,14 @@
   
     .add-profile-image-button {
       display: block;
-      width: 100px;
-      height: 100px;
+      width: 300px;
+      height: 300px;
       border-radius:50%;
       height: 50%;
       border: none;
       margin: 0 auto;
-      @include media-breakpoint-up(md) {
+
+      @include media-breakpoint-up(lg) {
         width: 200px;
         height: 200px;
       }
@@ -131,14 +140,48 @@
   .user-profile-wrapper {
     max-width: calc(100% - 50px);
     width: 100%;
-    margin: 10px auto 20px;
+    margin: 20px auto 40px;
+
+    @include media-breakpoint-up(lg) {
+      margin: 10px auto 20px;
+    }
 
     .user-bio {
       width: 75%;
-      margin: 10px auto 0;
-      font-size: 1.3rem;
+      margin: 20px auto 0;
+      font-size: 2rem;
       color: $text-color;
       overflow-wrap: break-word;
+
+      @include media-breakpoint-up(lg) {
+        margin: 10px auto 0;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .delete-button {
+    margin: 20px 20px 0;
+    border: none;
+    font-size: 2rem;
+    font-weight: 500;
+    color: $danger-red;
+
+    @include media-breakpoint-up(lg) {
+      margin: 20px 10px 0;
+      font-size: 1rem;
+    }
+  }
+  .edit-button {
+    margin: 20px 20px 0;
+    border: none;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #0000EE;
+
+    @include media-breakpoint-up(lg) {
+      margin: 20px 10px 0;
+      font-size: 1rem;
     }
   }
 }
