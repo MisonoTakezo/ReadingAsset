@@ -54,9 +54,14 @@
   }
 
   .login-form {
-    margin-top: 5px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
+
+    @include media-breakpoint-up(lg) {
+      width: 80%;
+      margin: 5px auto;
+    }
 
     .login-field {
       width: 100%;

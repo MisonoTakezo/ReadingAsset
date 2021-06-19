@@ -166,7 +166,6 @@
     flex-direction: column;
 
     @include media-breakpoint-up(lg) {
-      margin-top: 5px;
       width: 80%;
       margin: 5px auto;
     }
