@@ -1,8 +1,7 @@
-.user-container   
-  .session-container 
-    .user-card
-      = render partial: 'partials/user_profile', locals: { user: @user}
-      .transition-wrapper
+.user-container 
+  .user-card
+    = render partial: 'partials/user_profile', locals: { user: @user}
+    .transition-wrapper
 
   .post-container
     - if @posts.present?
