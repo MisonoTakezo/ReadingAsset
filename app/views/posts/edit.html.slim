@@ -1,5 +1,5 @@
 .post-container
-  h1.post-title 感想を修正する
+  h1.post-title 投稿を修正する
   .book-info-wrapper 
     .book-info-left
       = image_tag image_url(@post.book.image), class: "book-image"
@@ -9,7 +9,6 @@
         p.book-author = author.name
       p.book-description = @post.book.description
   .book-impression-wrapper
-    h2.impression-title 感想
     = form_for(@post, url: post_path, html: { class: "post-form" }) do |f|
       = f.text_area :impression, placeholder: " (500文字以内)", value: @post.impression, size: "40x40", class: "impression-text", maxlength: "500" 
       = f.submit "更新", class: "post-button base-button"
