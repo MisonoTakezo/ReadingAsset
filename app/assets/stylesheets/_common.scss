@@ -3,7 +3,11 @@ body {
   background-color: #dcdcdc;
 }
 .container {
-  margin: 88px auto;
+  margin: 200px auto;
+
+  @include media-breakpoint-up(lg) {
+    margin: 88px auto;
+  }
 }
 
 .base-button {

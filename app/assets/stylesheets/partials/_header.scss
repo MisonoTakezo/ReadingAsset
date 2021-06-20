@@ -4,11 +4,11 @@
   left: 0;
   z-index: 100;
   width: 100%;
-  height: 60px;
+  height: 176px;
   background-color: #ffffff;
   box-shadow: 0px 0px 5px 1px rgba(7, 7, 7, 0.931);
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     height: 88px;
   }
 
@@ -21,24 +21,24 @@
     margin: 0 auto;
 
     .header-left {
+      width: 25%;
       display: flex;
       align-items: center;
+      justify-content: center;
 
       h5 {
         color: #333333;
-        font-size: 1rem;
+        font-size: 3rem;
         font-family: fantasy;
         font-weight: bold;
         text-align: center;
-        margin-top: 2px;
 
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
           font-size: 1.5rem;
         }
 
         &:hover {
           text-decoration: none;
-          border-bottom: #ffff66;
         }
       }
 
@@ -57,70 +57,69 @@
     }
 
     .header-center {
-
+      width: 40%;
       display: flex;
       align-items: center;
+      justify-content: center;
 
       .search-bar {
         position: relative;
-        width: 150px;
-        height: 30px;
+        width: 300px;
+        height: 60px;
         background-color: white;
         border-radius: 3px;
-        display: none;
+        display: flex;
         align-items: center;
         align-self: center;
-        margin-left: 24px;
+        margin-left: 48px;
     
-        @include media-breakpoint-up(md) {
-          display: flex;
+        @include media-breakpoint-up(lg) {
+          width: 150px;
+          height: 30px;
+          margin-left: 24px;
         }
     
         .search-icon {
           position: absolute;
-          left: 18px;
-          top: 7px;
-          width: 16px;
-          height: 16px;
+          left: 36px;
+          top: 14px;
+          width: 32px;
+          height: 32px;
+
+          @include media-breakpoint-up(lg) {
+            left: 18px;
+            top: 7px;
+            width: 16px;
+            height: 16px; 
+          }
         }
     
         .search-text-field {
           width: 100%;
           height: 100%;
-          border: solid 1px;
+          border: solid 2px;
           border-color: #dcdcdc;
           border-radius: 8px;
           font-weight: 500;
-          font-size: 1rem;
+          font-size: 2rem;
           color: $text-color;
-          padding-left: 45px;
+          padding-left: 90px;
+
+          @include media-breakpoint-up(lg) {
+            bordre: solid 1px;
+            border-color: #dcdcdc;
+            font-size: 1rem;
+            padding-left: 45px;
+          }
         }
       }
     }
 
     .header-right {
+      width: 25%;
       display: flex;
       align-items: center;
-      margin: 0 5px 0 0;
-
-      .header-post-link {
-        margin: 0 0 0 0;
-        padding: 5px 10px;
-        border: 1px solid #8888ff;
-        border-radius: 5px;
-        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.12);
-        cursor: pointer;
-
-        &:hover {
-          text-decoration: none;
-          color: #ffffff;
-          background-color: #8888ff;
-        }
-      }
-
-      .mypage-link {
-        margin-left: 30px;
-      }
+      justify-content: center;
       
       a {
         text-decoration: none;
@@ -131,19 +130,30 @@
       }
 
       .header-login-link {
-        margin: 0 0 0 0;
-        padding: 5px 10px;
         background-color: $login-button-blue;
-        border: 1px solid $login-button-blue;
+        border: 2px solid $login-button-blue;
         border-radius: 5px;
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.12);
+        font-size: 2rem;
+        padding: 10px;
         color: #ffffff;
+
+        @include media-breakpoint-up(lg) {
+          border: 1px solid $login-button-blue;
+          font-size: 1rem;
+          padding: 5px;
+        }
       }
 
       .person-icon {
-        width: 50px;
-        height: 50px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
+
+        @include media-breakpoint-up(lg) {
+          width: 50px;
+          height: 50px; 
+        }
       }
     }
   }
