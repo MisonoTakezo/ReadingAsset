@@ -3,7 +3,7 @@
     = render partial: 'partials/user_profile', locals: { user: @user}
     .transition-wrapper
 
-  .post-container
+  .user-post-container
     - if @posts.present?
       - @posts.each do |post|
         .user-info-wrapper

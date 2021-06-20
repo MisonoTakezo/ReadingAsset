@@ -5,7 +5,7 @@
       = link_to "ログアウト", logout_path(@user), method: :delete, class: "delete-button base-button"
       = link_to "編集する", edit_user_path(@user), class: "edit-button base-button"
 
-  .post-container
+  .user-post-container
     - if @posts.present?
       - @posts.each do |post|
         .user-info-wrapper
