@@ -21,7 +21,7 @@
               h4.book-title = post.book.title 
               - post.book.authors.each do |author|
                 p.book-author = author.name
-            p.book-description = post.impression
+            p.book-impression = post.impression
     - else
       .no-content-wrapper
         = image_tag image_url("common/notebook-icon.svg"), class: "no-content-image"
