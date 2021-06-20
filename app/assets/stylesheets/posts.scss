@@ -285,25 +285,44 @@
 
   .no-book-wrapper {
     height: 400px;
-    margin-top: 200px;
+    margin-top: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    @include media-breakpoint-up(lg) {
+      margin-top: 200px;
+    }
+
     .no-book-image {
-      width: 70px;
-      height: 70px;
+      width: 140px;
+      height: 140px;
+
+      @include media-breakpoint-up(lg) {
+        width: 70px;
+        height: 70px;
+      }
     }
 
     .no-book-message {
-      margin: 5px 0 0;
-      font-size: 1rem;
+      margin: 10px 0 0;
+      font-size: 2rem;
       color: #A9A9A9; 
+
+      @include media-breakpoint-up(lg) {
+        margin: 5px 0 0;
+        font-size: 1rem;
+      }
     }
 
     .book-search-link {
-      margin-top: 5px;
-      font-size: 1rem;
+      margin-top: 10px;
+      font-size: 2rem;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 5px;
+        font-size: 1rem; 
+      }
     }
   }
 }
