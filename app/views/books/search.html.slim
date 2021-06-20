@@ -1,4 +1,4 @@
-.search-container
+.book-container
   = form_tag('/books/search', method: :get, class: "search-form")
         .search-bar
           = text_field_tag :q, @query, class: "search-text-field", placeholder: "本を検索"
