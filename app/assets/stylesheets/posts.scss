@@ -34,9 +34,13 @@
     }
 
     .book-info-left {
-      margin: 15px 30px;
+      margin: 15px 30px 15px 0;
       display: flex;
       align-items: center;
+
+      @include media-breakpoint-up(lg) {
+        margin: 15px 15px 15px 0;
+      }
 
       .book-image {
         width: 256px;
@@ -47,13 +51,18 @@
       }
     }
     .book-info-right {
-      width: 47%;
+      width: 45%;
       min-height: 321px;
-      margin: 15px 15px 30px;
+      margin: 15px 0 15px 15px;
       padding: 10px 10px 0px 10px;
       border: solid;
       border-radius: 8px;
       border-color: #dcdcdc;
+
+      @include media-breakpoint-up(lg) {
+        width: 40%;
+        margin: 15px 0 15px 15px;
+      }
 
       .book-info-detail {
         padding: 0 0 10px 0;
