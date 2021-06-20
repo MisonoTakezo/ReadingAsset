@@ -4,7 +4,7 @@
   min-height: 80vh;
   background-color: white;
   border-radius: 15px;
-  padding-top: 50px;
+  padding: 50px 0 30px;
 
   @include media-breakpoint-up(lg){
     width: 50%;
@@ -13,9 +13,16 @@
   .book-info-wrapper {
     display: flex;
     justify-content: center;
+    margin-top: 40px;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 20px;
+    }
 
     .book-info-left {
       margin: 15px 30px;
+      display: flex;
+      align-items: center;
 
       .book-image {
         width: 256px;
@@ -74,6 +81,18 @@
           font-size: 1rem;
         }
       }
+      
+      .book-description {
+        margin-left: 20px;
+        padding: 10px 0;
+        font-size: 1.5rem;
+
+        @include media-breakpoint-up(lg) {
+          margin-left: 10px;
+          padding:0;
+          font-size: 1rem;
+        }
+      }
     }
   }
   .book-impression-wrapper {
@@ -105,13 +124,19 @@
 
     .impression-text-show {
       display: block;
+      min-height: 200px;
       padding: 10px 20px;
       margin: 5px 0;
       border: solid;
       border-radius: 8px;
       border-color: #dcdcdc;
-      font-size: 1.2rem;
+      font-size: 1.8rem;
       color: $text-color;
+
+      @include media-breakpoint-up(lg) {
+        min-height: 150px;
+        font-size: 1.5rem;
+      }
     }
 
     .post-button {
@@ -175,16 +200,24 @@
   .delete-button {
     margin: 10px 10px 0;
     border: none;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: $danger-red;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 1.2rem;
+    }
   }
   .edit-button {
     margin: 10px 10px 0;
     border: none;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: #0000EE;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 1.2rem;
+    }
   }
 
   .no-content-wrapper {
