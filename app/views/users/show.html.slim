@@ -1,4 +1,6 @@
 .user-container 
+  - breadcrumb :user_show, @user
+  == breadcrumbs
   .user-card
     = render partial: 'partials/user_profile', locals: { user: @user}
     .transition-wrapper

@@ -1,4 +1,6 @@
 .post-container
+  - breadcrumb :post_show, @post
+  == breadcrumbs
   .user-info-wrapper
     = link_to user_path(@post.user), class: "user-path" do 
       = image_tag @post.user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"

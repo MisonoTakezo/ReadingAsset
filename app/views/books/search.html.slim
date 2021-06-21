@@ -1,4 +1,6 @@
 .book-container
+  - breadcrumb :book_search
+  == breadcrumbs
   = form_tag('/books/search', method: :get, class: "search-form")
         .search-bar
           = text_field_tag :q, @query, class: "search-text-field", placeholder: "本を検索"
@@ -7,7 +9,7 @@
   - if @books.present?
     .search-result-wrapper
       - @books.each do |book|
-        = link_to new_post_path(google_books_api_id: book.google_books_api_id), class: "post-link" do
+        = link_to new_post_path(google_books_api_id: book.google_books_api_id, q: @query), class: "post-link" do
           = image_tag image_url(book.image), class: "book-image"
           p.book-title = book.title
   - else 

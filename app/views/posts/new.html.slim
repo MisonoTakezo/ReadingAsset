@@ -1,4 +1,7 @@
 .post-container
+  - breadcrumb :new_post, @query
+  == breadcrumbs
+
   - if @book.present?
     h1.post-title 感想を投稿する
     .book-info-wrapper 
