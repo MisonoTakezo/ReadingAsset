@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       redirect_to mypage_user_path(@user) and return
     end
 
-    @posts = @user.valid_posts
+    @posts = @user.valid_posts.page(params[:page]).per(20)
   end
 
   # GET /users/:id/mypage
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user) and return
     end
 
-    @posts = @user.valid_posts
+    @posts = @user.valid_posts.page(params[:page]).per(20)
   end
 
   def edit

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   before_action :must_be_post_owner, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.where(status: :visible).includes(book: :authors).order(id: :desc).page(params[:page]).per(2)
+    @posts = Post.where(status: :visible).includes(book: :authors).order(id: :desc).page(params[:page]).per(25)
   end
 
   def new
