@@ -11,8 +11,7 @@ class PostsController < ApplicationController
 
   def new
     @query = new_post_params[:q]
-    api_id = new_post_params[:google_books_api_id]
-    @book = Fetcher::GoogleBook::BookIdentify.call(google_books_api_id: api_id)
+    @book = Fetcher::GoogleBook::BookIdentify.call(google_books_api_id: new_post_params[:gb_id])
     @post_form = PostForm.new
   end
 
@@ -63,7 +62,7 @@ class PostsController < ApplicationController
     end
 
     def new_post_params
-      params.permit(:google_books_api_id, :q)
+      params.permit(:gb_id, :q)
     end
 
     def set_post
