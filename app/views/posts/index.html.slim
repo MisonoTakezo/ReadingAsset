@@ -15,6 +15,8 @@
             - post.book.authors.each do |author|
               p.book-author = author.name
           p.book-impression = post.impression
+    = paginate @posts
+
   - else 
     .no-book-wrapper
       = image_tag image_url("common/notebook-icon.svg"), class: "no-book-image"

@@ -17,3 +17,54 @@ body {
     transform: translateY(4px);
   }
 }
+
+.pagination {
+  width: 100%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-around;
+
+  @include media-breakpoint-up(lg) {
+    width: 80%;
+    margin: 50px auto;
+  }
+
+  a {
+    text-decoration: none;
+    color: #696969;
+    font-size: 2rem;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 1rem;
+    }
+  }
+
+  .page {
+    padding: 10px 30px;
+
+    @include media-breakpoint-up(lg) {
+      padding: 10px 15px;
+    }
+  }
+
+  .current {
+    background-color: #3273DC;
+    color: white;
+    font-size: 2rem;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 1rem;
+    }
+
+  }
+
+  span {
+    border: solid 1px #dcdcdc;
+    border-radius: 3px;
+    padding: 10px;
+
+    &:hover {
+      border: solid 1px $text-color;
+    }
+  }
+}
