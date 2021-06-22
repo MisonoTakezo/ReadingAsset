@@ -1,16 +1,6 @@
 .post-container
-  .post-head
-    - breadcrumb :post_show, @post
-    == breadcrumbs
-    .profile-share
-      - if @post.created_by?(@current_user)
-        - share_text = "#{@post.book.title}の感想を書きました。"
-      - else
-        - share_text = "#{@post.user.name}さんの#{@post.book.title}の感想をチェック！" 
-      a.twitter-share.twitter-share-button href="https://twitter.com/intent/tweet?url=#{request.url}&text=#{share_text}"
-        img src=image_url("common/twitter.png")
-        p 投稿をシェア
-
+  - breadcrumb :post_show, @post
+  == breadcrumbs
   .user-info-wrapper
     = link_to user_path(@post.user), class: "user-path" do 
       = image_tag @post.user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"

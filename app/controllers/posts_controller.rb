@@ -27,11 +27,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @og_image = @post.book.image_url
-    @og_title =  @post.book.title + " | Reading Asset"
-    @og_description = @post.user.name + "さんの" + @post.book.title + "の感想をチェック！ | Reading Asset"
-  end
+  def show; end
 
   def edit; end
 
