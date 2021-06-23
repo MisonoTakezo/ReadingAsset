@@ -22,4 +22,8 @@ class Book < ApplicationRecord
   validates :title, length: { maximum: 50 }, presence: true
   validates :image, length: { maximum: 1000 }
   validates :description, length: { maximum: 1000 }
+
+  def image_url
+    image.to_s
+  end
 end
