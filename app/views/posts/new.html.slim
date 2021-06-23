@@ -31,6 +31,6 @@
                     p.login-error-text = message
   - else 
     .no-book-wrapper 
-      =image_tag image_url("common/notebook-icon.svg"), class: "no-book-image"
+      =image_tag asset_path("common/notebook-icon.svg"), class: "no-book-image"
       p.no-book-message 本が見つかりません
       = link_to "本を探す", search_books_path, class: "book-search-link"

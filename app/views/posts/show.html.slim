@@ -8,11 +8,11 @@
       - else
         - share_text = "#{@post.user.name}さんの#{@post.book.title}の感想をチェック！" 
       a.twitter-share.twitter-share-button href="https://twitter.com/intent/tweet?url=#{request.url}&text=#{share_text}"
-        img src=image_url("common/twitter.png")
+        img src= asset_path("common/twitter.png")
         p 投稿をシェア
   .user-info-wrapper
     = link_to user_path(@post.user), class: "user-path" do 
-      = image_tag @post.user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
+      = image_tag @post.user.profile_image.url || asset_path("common/person-icon.svg"), class: "user-profile"
     p.user-name = @post.user.name
   .book-info-wrapper 
     .book-info-left

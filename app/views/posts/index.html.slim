@@ -3,7 +3,7 @@
     - @posts.each do |post|
       .user-info-wrapper
         = link_to user_path(post.user), class: "user-path" do 
-          = image_tag post.user.profile_image.url || image_url("common/person-icon.svg"), class: "user-profile"
+          = image_tag post.user.profile_image.url || asset_path("common/person-icon.svg"), class: "user-profile"
         p.user-name = post.user.name
       .book-info-wrapper 
         .book-info-left
@@ -19,6 +19,6 @@
 
   - else 
     .no-book-wrapper
-      = image_tag image_url("common/notebook-icon.svg"), class: "no-book-image"
+      = image_tag asset_path("common/notebook-icon.svg"), class: "no-book-image"
       p.no-book-message 投稿がありません
 

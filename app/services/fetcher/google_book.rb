@@ -38,7 +38,7 @@ class Fetcher::GoogleBook
         BookObject.new(
           google_books_api_id: item["id"],
           authors: item["volumeInfo"]["authors"] || ["AuthorUnknown"],
-          image: thumbnail_url(item) || "common/no-image-icon.svg",
+          image: thumbnail_url(item) || asset_path("common/no-image-icon.svg"),
           title: item["volumeInfo"]["title"] || "No Title Available",
           description: sanitize_text(item["volumeInfo"]["description"]|| "No Description Available",).slice(0, 255),
           published_at: item["volumeInfo"]["publishedDate"]
@@ -60,7 +60,7 @@ class Fetcher::GoogleBook
       item = BookObject.new(
         google_books_api_id: item["id"],
         authors: item["volumeInfo"]["authors"] || ["AuthorUnknown"],
-        image: thumbnail_url(item) || "common/no-image-icon.svg",
+        image: thumbnail_url(item) || asset_path("common/no-image-icon.svg"),
         title: item["volumeInfo"]["title"] || "No Title Available",
         description: sanitize_text(item["volumeInfo"]["description"]|| "No Description Available",).slice(0, 255),
         published_at: item["volumeInfo"]["publishedDate"]

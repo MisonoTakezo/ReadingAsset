@@ -8,7 +8,7 @@
       = button_tag type: "button",
                   class: "add-profile-image-button base-button",
                   id: "add_profile_image_button" do
-        = image_tag @user.profile_image.url || image_url("common/person-icon.svg"),
+        = image_tag @user.profile_image.url || asset_path("common/person-icon.svg"),
                     class: "profile-image-preview #{"active" if @user.profile_image.url}",
                     id: "profile_image_preview"
     = form_with model: @user,
