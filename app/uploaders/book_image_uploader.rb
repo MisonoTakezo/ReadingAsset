@@ -1,0 +1,2 @@
+class BookImageUploader < DefaultUploader
+end
