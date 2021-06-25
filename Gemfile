@@ -47,8 +47,11 @@ gem "dotenv-rails"
 
 gem "annotate"
 
+# uploader
 gem "carrierwave"
 gem 'mini_magick'
+gem "fog-aws"
+
 gem "smart_init"
 gem 'addressable'
 gem "virtus"
