@@ -5,7 +5,7 @@ unless Rails.env.development? || Rails.env.test?
       provider: 'AWS',
       aws_access_key_id: ENV["AWS_ACCESS_KEY"],
       aws_secret_access_key: ENV["AWS_SECRET_KEY"],
-      region: Settings.aws.region
+      region: "ap-northeast-1"
     }
     config.fog_public = true
     config.fog_directory  = "ra-s3-bucket"
