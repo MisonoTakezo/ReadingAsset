@@ -53,9 +53,9 @@ class UsersController < ApplicationController
   # GET /users/:id/verify
   def verify
     if @user.verify_by(verify_params[:vt])
-      login_and_remember(user)
+      login_and_remember(@user)
       flash[:success] = "メールアドレスの確認が完了しました。プロフィールを編集してください！"
-      redirect_to mypage_user_path(user)
+      redirect_to mypage_user_path(@user)
     else
         flash[:error] = "このアカウントの認証に失敗しました。再度確認メールに送られたURLを表示ください。"
         redirect_to root_path
