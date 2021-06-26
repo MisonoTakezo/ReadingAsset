@@ -31,6 +31,40 @@
     }
   }
 
+  .unverified {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    .unverified-title {
+      font-size: 2.5rem;
+      color: $text-color;
+      font-weight: bold;
+      margin: 40px 12px;
+      text-align: center;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 1.5rem;
+        margin: 40px 12px;
+      }
+    }
+
+    .unverified-description {
+      font-size: 2rem;
+      color: $text-color;
+      font-weight: normal;
+      line-height: 2.5rem;
+      margin: 0 12px;
+      padding-top: 16px;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 1.2rem
+      }
+    }
+  }
+
   .user-title {
     text-align: center;
     font-size: 4rem;
