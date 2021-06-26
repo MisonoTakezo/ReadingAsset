@@ -18,8 +18,6 @@ class Book < ApplicationRecord
   has_many :books_authors
   has_many :authors, through: :books_authors
 
-  mount_uploader :image, BookImageUploader
-
   validates :google_books_api_id, presence: true
   validates :title, length: { maximum: 50 }, presence: true
   validates :image, length: { maximum: 1000 }

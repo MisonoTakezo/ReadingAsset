@@ -1,2 +1,0 @@
-class BookImageUploader < DefaultUploader
-end
