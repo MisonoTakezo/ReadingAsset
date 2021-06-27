@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:mypage, :verify, :edit, :update]
   before_action :should_verify_user, only: [:mypage, :edit, :update]
   before_action :only_current_user, only: [:mypage, :edit, :update]
+  before_action :current_user, only: [:show]
 
   def new
     @user = User.new
@@ -30,6 +31,11 @@ class UsersController < ApplicationController
       flash[:error] = "このアカウントは表示できません。"
       redirect_to root_path and return
     end
+
+    if @current_user && @current_user == @user
+      redirect_to mypage_user_path(@user) and return
+    end
+
     @posts = @user.valid_posts.page(params[:page]).per(20)
   end
 
