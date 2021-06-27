@@ -4,10 +4,10 @@
     h1.session-title 新規登録
 
     = form_with model: @user, local: true , class: "login-form" do |f|
-      = f.text_field :name, placeholder: "名前", class: 'login-field'
-      = f.text_field :email, placeholder: "メールアドレス", class: 'login-field'
-      = f.password_field :password, placeholder: "パスワード(8文字以上)", class: 'login-field'
-      = f.password_field :password_confirmation, placeholder: "パスワード(確認用)", class: 'login-field'
+      = f.text_field :name, placeholder: "名前", class: 'login-field', maxlength: "20"
+      = f.text_field :email, placeholder: "メールアドレス", class: 'login-field', maxlength: "50"
+      = f.password_field :password, placeholder: "パスワード(8文字以上)", class: 'login-field', maxlength: "50"
+      = f.password_field :password_confirmation, placeholder: "パスワード(確認用)", class: 'login-field', maxlength: "50"
       = f.submit '登録する', class: 'base-button login-button', data: { disable_with: "登録しています..." }
 
       - if @user.errors.any?
