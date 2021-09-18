@@ -11,11 +11,6 @@ services:
       - ./docker_configs/mysql/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
     env_file:
       - .env
-  # redis:
-    # image: redis:4.0
-    # volumes:
-      # - ./docker_volumes/redis:/data
-    # command: redis-server
   nginx:
     build:
       context: docker_configs/nginx
@@ -44,14 +39,6 @@ services:
     stdin_open: true
     volumes:
       - .:/usr/src/ra
-  # worker:
-  #   <<: *app_base
-  #   container_name: ra_worker
-  #   command: bundle exec sidekiq -C config/sidekiq.yml
-  #   ports:
-  #     - "8099:3000"
-  #   env_file:
-  #     - .env
 volumes:
   db:
     driver: "local"
