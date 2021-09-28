@@ -1,4 +1,4 @@
-# ReadingAsset （読書感想投稿、管理アプリ📖)
+# ReadingAsset （読書の感想投稿、管理アプリ📖)
 
 <img width="917" alt="名称未設定" src="https://user-images.githubusercontent.com/40426755/134841641-f654816c-a5f2-4480-a684-b5d641105ee9.png">
 
