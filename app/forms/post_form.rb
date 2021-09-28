@@ -30,12 +30,13 @@ class PostForm
   validates :impression, length: { maximum: 500 }
 
   def save
-    return false if invalid?
+    user = User.find_by(id: user_id, status: :verified)
+    return false if invalid? || user.nil?
 
     ActiveRecord::Base.transaction do
       book = find_book_or_nil(google_books_api_id)
 
-      unless book.present?
+      if book.nil?
         book = Book.new(
           google_books_api_id: google_books_api_id,
           title: title,
@@ -51,26 +52,26 @@ class PostForm
       author_arr.each do |author_name|
         author = find_author_or_nil(author_name)
 
-        unless author.present?
+        if author.nil?
           author = Author.new(
             name: author_name
           )
           author.save!
         end
 
-        books_author = find_books_author_or_nil(author.id, book.id)
+        books_author = find_books_author_or_nil(author, book)
 
-        unless books_author.present?
+        if books_author.nil?
           books_author = BooksAuthor.new(
-            author_id: author.id,
-            book_id: book.id
+            author: author,
+            book: book
           )
           books_author.save!
         end
       end
 
-      @post = find_post_or_nil(user_id, book.id)
-      unless @post.present?
+      @post = find_post_or_nil(user, book)
+      if @post.nil?
         @post = Post.new(
           user_id: user_id,
           book_id: book.id,
@@ -101,13 +102,13 @@ class PostForm
       return author
     end
 
-    def find_books_author_or_nil(author_id, book_id)
-      books_author = BooksAuthor.find_by(author_id: author_id, book_id: book_id)
+    def find_books_author_or_nil(author, book)
+      books_author = BooksAuthor.find_by(author: author, book_id: book)
       return books_author
     end
 
-    def find_post_or_nil(user_id, book_id)
-      post = Post.find_by(user_id: user_id, book_id: book_id)
+    def find_post_or_nil(user, book)
+      post = Post.find_by(user: user, book: book)
       return post
     end
 end
