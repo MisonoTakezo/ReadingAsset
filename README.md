@@ -23,7 +23,7 @@ APPLICATION_MODE=all
 RAILS_ENV=development
 # Mysql
 MYSQL_ROOT_PASSWORD=pass
-MYSQL_ROOT_USER=pass #自身のホストOSのmysqlのroot ユーザーのパスワードを入れる
+MYSQL_ROOT_USER=pass
 # Nginx
 NGINX_SEVER_NAME=localhost
 
@@ -46,10 +46,15 @@ docker-compose exec app rails db:create
 ```
 docker-compose exec app rails db:migrate
 ```
-7 以下のURLにアクセス\
+
+8 DBの初期データの保存
+```
+docker-compose exec app rails db:seed
+```
+9 以下のURLにアクセス\
 [http://localhost:80](http://localhost:80)
 
-8 開発環境でのメールの受信(letter_opener_web)\
+10 開発環境でのメールの受信(letter_opener_web)\
 [http://localhost:80/letter_opener](http://localhost:80/letter_opener)
 
 
