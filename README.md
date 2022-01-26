@@ -8,7 +8,7 @@
 
 ### 用いた技術スタック
 Ruby on Rails, Docker, Nginx, MySQL, GoogleBooksAPI\
-Infra(維持費がかかるため、現在はインスタンスを停止済み): AWS (EC2 / RDS / ALB / Route53, ACM) 
+Infra(維持費がかかるため、現在はインスタンスを停止済み): AWS (EC2 / RDS / ALB / Route53, ACM, S3) 
 
 ### 動かし方
 
