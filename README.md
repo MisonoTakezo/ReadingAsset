@@ -30,7 +30,10 @@ MYSQL_ROOT_PASSWORD=pass
 MYSQL_ROOT_USER=pass
 # Nginx
 NGINX_SEVER_NAME=localhost
+```
 
+```
+$ cp .env.example .env
 ```
 
 3 docker イメージをビルド
