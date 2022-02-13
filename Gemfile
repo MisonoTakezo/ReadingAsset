@@ -61,6 +61,9 @@ gem "kaminari"
 
 gem "gretel"
 
+# CI
+gem "travis"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 

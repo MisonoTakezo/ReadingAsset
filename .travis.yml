@@ -1,0 +1,10 @@
+services: docker
+
+before_install:
+  - cp .env.example .env
+  - docker-compose up --build -d
+
+script:
+  - docker-compose exec --env 'RAILS_ENV=test' app rails db:create
+  - docker-compose exec --env 'RAILS_ENV=test' app rails db:migrate
+  - docker-compose exec --env 'RAILS_ENV=test' app bundle exec rspec
