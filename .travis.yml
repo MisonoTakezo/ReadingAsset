@@ -4,7 +4,6 @@ before_install:
   - cp .env.example .env
   - gem update --system
   - gem install bundler -v 2.1.0
-  - bundle install
   - docker-compose up --build -d
 
 script:
