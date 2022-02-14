@@ -14,9 +14,9 @@
 #  updated_at                             :datetime         not null
 #
 class Book < ApplicationRecord
-  has_one :post
+  has_one :post, dependent: :nullify
 
-  has_many :books_authors
+  has_many :books_authors, dependent: :nullify
   has_many :authors, through: :books_authors
 
   validates :google_books_api_id, presence: true

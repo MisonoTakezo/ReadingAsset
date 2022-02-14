@@ -56,7 +56,7 @@ class Fetcher::GoogleBook
       item = JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(base_url))))
       return nil if item.has_key?("error")
 
-      item = BookObject.new(
+      BookObject.new(
         google_books_api_id: item["id"],
         authors: item["volumeInfo"]["authors"] || ["AuthorUnknown"],
         image: thumbnail_url(item).to_s.sub("http", "https") || ActionController::Base.helpers.asset_path("common/no-image-icon.svg"),
