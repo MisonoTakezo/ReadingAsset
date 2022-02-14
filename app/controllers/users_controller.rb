@@ -63,8 +63,8 @@ class UsersController < ApplicationController
       flash[:success] = "メールアドレスの確認が完了しました。プロフィールを編集してください！"
       redirect_to mypage_user_path(@user)
     else
-        flash[:error] = "このアカウントの認証に失敗しました。再度確認メールに送られたURLを表示ください。"
-        redirect_to root_path
+      flash[:error] = "このアカウントの認証に失敗しました。再度確認メールに送られたURLを表示ください。"
+      redirect_to root_path
     end
   end
 

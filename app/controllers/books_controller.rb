@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BooksController < ApplicationController
   def search
     @query = search_params[:q]

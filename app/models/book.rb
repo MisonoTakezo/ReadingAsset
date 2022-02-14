@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: books
@@ -12,7 +14,6 @@
 #  updated_at                             :datetime         not null
 #
 class Book < ApplicationRecord
-
   has_one :post
 
   has_many :books_authors

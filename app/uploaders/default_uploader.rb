@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class DefaultUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
@@ -20,11 +21,11 @@ class DefaultUploader < CarrierWave::Uploader::Base
   process :fix_exif_rotation_and_strip_exif, if: :image?
 
   def image?(new_file)
-    new_file.content_type.start_with? 'image'
+    new_file.content_type.start_with? "image"
   end
 
   def video?(new_file)
-    new_file.content_type.start_with? 'video'
+    new_file.content_type.start_with? "video"
   end
 
   def filename

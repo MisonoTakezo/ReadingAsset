@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserProfileImageUploader < DefaultUploader
   process resize_to_fit: [800, 800]
 

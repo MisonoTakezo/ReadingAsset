@@ -29,14 +29,13 @@ class PostsController < ApplicationController
 
   def show
     @og_image = @post.book.image_url
-    @og_title =  @post.book.title + " | Reading Asset"
+    @og_title = @post.book.title + " | Reading Asset"
     @og_description = @post.user.name + "さんの" + @post.book.title + "の感想をチェック！ | Reading Asset"
   end
 
   def edit; end
 
   def update
-
     if @post.update(update_post_params)
       flash[:success] = "更新しました。"
       redirect_to @post

@@ -34,8 +34,8 @@ gem "jbuilder", "~> 2.5"
 
 gem "html2slim"
 gem "slim-rails"
-gem 'rails-i18n'
-gem 'enum_help'
+gem "rails-i18n"
+gem "enum_help"
 
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
@@ -49,11 +49,11 @@ gem "annotate"
 
 # uploader
 gem "carrierwave"
-gem 'mini_magick'
+gem "mini_magick"
 gem "fog-aws"
 
 gem "smart_init"
-gem 'addressable'
+gem "addressable"
 gem "virtus"
 gem "virtus-multiparams"
 

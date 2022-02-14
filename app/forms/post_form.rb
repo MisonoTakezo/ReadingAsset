@@ -94,21 +94,21 @@ class PostForm
 
     def find_book_or_nil(book_api)
       book = Book.find_by(google_books_api_id: book_api)
-      return book
+      book
     end
 
     def find_author_or_nil(name)
       author = Author.find_by(name: name)
-      return author
+      author
     end
 
     def find_books_author_or_nil(author, book)
       books_author = BooksAuthor.find_by(author: author, book_id: book)
-      return books_author
+      books_author
     end
 
     def find_post_or_nil(user, book)
       post = Post.find_by(user: user, book: book)
-      return post
+      post
     end
 end

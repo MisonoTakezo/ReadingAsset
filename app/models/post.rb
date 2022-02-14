@@ -28,7 +28,7 @@ class Post < ApplicationRecord
   belongs_to :book
   belongs_to :user
 
-  enum status: {invisible: 0, visible: 1, deleted: 2 }
+  enum status: { invisible: 0, visible: 1, deleted: 2 }
 
   def created_by?(current_user)
     current_user && current_user == user

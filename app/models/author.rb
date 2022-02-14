@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: authors
@@ -9,7 +11,7 @@
 #
 class Author < ApplicationRecord
   validates :name, length: { maximum: 50 }, presence: true
-  
+
   has_many :books_authors
   has_many :books, through: :books_authors
 end

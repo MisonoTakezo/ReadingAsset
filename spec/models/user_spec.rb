@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -16,7 +18,7 @@
 #  created_at                                                        :datetime         not null
 #  updated_at                                                        :datetime         not null
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
   describe "validation" do
@@ -57,7 +59,7 @@ RSpec.describe User, type: :model do
       invalid_user = FactoryBot.build(:user, password: invalid_password)
       expect(invalid_user).to be_invalid
     end
-    
+
     it "50文字を超える長さのパスワードは無効である" do
       invalid_password = "password" * 10
       invalid_user = FactoryBot.build(:user, password: invalid_password)

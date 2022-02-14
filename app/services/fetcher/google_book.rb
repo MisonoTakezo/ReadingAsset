@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Fetcher::GoogleBook
-
   class BookObject
     include Virtus.model
 
@@ -30,17 +29,17 @@ class Fetcher::GoogleBook
 
     def call
       base_url = "https://www.googleapis.com/books/v1/volumes?q=#{q}&country=JP&maxResults=40"
-      res =  JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(base_url))))
+      res = JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(base_url))))
       items = res["items"]
       return [] unless items
-      
+
       items.map do |item|
         BookObject.new(
           google_books_api_id: item["id"],
           authors: item["volumeInfo"]["authors"] || ["AuthorUnknown"],
           image: thumbnail_url(item).to_s.sub("http", "https") || ActionController::Base.helpers.asset_path("common/no-image-icon.svg"),
           title: item["volumeInfo"]["title"] || "No Title Available",
-          description: sanitize_text(item["volumeInfo"]["description"]|| "No Description Available",).slice(0, 255),
+          description: sanitize_text(item["volumeInfo"]["description"] || "No Description Available",).slice(0, 255),
           published_at: item["volumeInfo"]["publishedDate"]
         )
       end
@@ -62,7 +61,7 @@ class Fetcher::GoogleBook
         authors: item["volumeInfo"]["authors"] || ["AuthorUnknown"],
         image: thumbnail_url(item).to_s.sub("http", "https") || ActionController::Base.helpers.asset_path("common/no-image-icon.svg"),
         title: item["volumeInfo"]["title"] || "No Title Available",
-        description: sanitize_text(item["volumeInfo"]["description"]|| "No Description Available").slice(0, 255),
+        description: sanitize_text(item["volumeInfo"]["description"] || "No Description Available").slice(0, 255),
         published_at: item["volumeInfo"]["publishedDate"]
       )
     end
