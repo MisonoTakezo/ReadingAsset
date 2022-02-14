@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_022214) do
+ActiveRecord::Schema.define(version: 2022_02_14_120353) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "name", limit: 100, null: false, comment: "著者名"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_022214) do
     t.datetime "verification_token_expired_at", comment: "有効化トークン有効期限"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "books_authors", "authors"

@@ -18,6 +18,10 @@
 #  created_at                                                        :datetime         not null
 #  updated_at                                                        :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
+#
 FactoryBot.define do
   factory :user do
     status { :verified }
