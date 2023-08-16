@@ -32,3 +32,5 @@ production:
   username: <%= ENV['MYSQL_ROOT_USER'] %>
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   host: <%= ENV['MYSQL_HOST'] || 'db' %>
+  ssl_mode: verify_identity
+  sslca: "/etc/ssl/certs/ca-certificates.crt"
